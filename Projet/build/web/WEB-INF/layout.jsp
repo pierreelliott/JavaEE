@@ -17,6 +17,7 @@
 		<link rel="icon" href="images/logo_onglet.png">
                 <%! String contenu = (String)request.getParameter("contenu");
                     String titre = (String)request.getParameter("titre");
+                    String incFile = (String)request.getParameter("includeFile");
                 %>
 
 		<title><% out.println(titre); %></title>
@@ -29,7 +30,20 @@
 		<% //require("header.php"); %>
 
 		<div class="container-fluid">
-			<% out.println(contenu); %>
+                        <% 
+                        if(request.getParameter("hasParameter") != null)
+                        {
+                            out.print("<jsp:include page='"+incFile+"'>");
+                            for(int i=0; i<1; i++)
+                            {
+                            out.print("<jsp:params></jsp:params>");
+                            }
+                            out.print("</jsp:include>");
+                        }
+                        else
+                        {
+                        out.print("<jsp:include page='"+incFile+"'/>");
+                        }%>
 		</div>
 
 
