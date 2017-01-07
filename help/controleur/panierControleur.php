@@ -1,6 +1,6 @@
 <?php
     include_once('modele/PanierManager.php');
-	
+
     class panierControleur
     {
         public $panier;
@@ -12,16 +12,16 @@
 
         public function afficherPanier()
         {
-            if(isset($_GET["action"]) && isset($_GET["produit"]))
+            if(isset($_POST["action"]) and isset($_POST["produit"]))
             {
-                $tabParams = explode(',', $_GET["produit"]);
+                $tabParams = explode(',', $_POST["produit"]);
                 if(count($tabParams) != 5 and count($tabParams) != 6)
                 {
                     echo "Le produit n'est pas reconnu";
                 }
                 else
                 {
-                    switch ($_GET["action"])
+                    switch ($_POST["action"])
                     {
                         case "ajout":
                             $this->panier->ajouterProduit($tabParams);
@@ -32,14 +32,20 @@
                         break;
 
                         case "modification":
-                            $this->panier->changerQuantiteProduit($tabParams[1], 1);
-                            # Nécessite une modification supérieure (ajouter la quantité en paramètre)
+                            if(isset($_POST["qte"]))
+                            {
+                                $this->panier->changerQuantiteProduit($tabParams, $_POST["qte"]);
+                            }
+                        break;
 
                         default : echo 'L\'action demandée n\'est pas reconnue';
                     }
-                }      
+                }
             }
-
+            if($this->estVide())
+            {
+                $estVide == true;
+            }
             include_once('vue/panier.php');
         }
     }

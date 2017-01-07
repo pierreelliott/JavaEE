@@ -5,10 +5,12 @@
     {
 		# Constructeur du panier
 		# Fonctionne comme n'importe quel constructeur (mais pas d'appel implicite au constructeur parent)
-		
+
 		/* Description variables du panier */
 		#Ce serait bien que tu décrives un peu les variables du panier Axel, parce que j'ai pas tout suivi ^^'
-		
+                # ==> en gros on a un champ "panier" dans $_SESSION puis les numéros de produit dans $_SESSION["panier"]
+                #     et dans chaque case $_SESSION["panier"][$numproduit] on a les données du produits (libellé, prix, image, qte...)
+
 		public function __construct()
 		{
 			if(!isset($_SESSION["panier"]))
@@ -16,12 +18,12 @@
 				$_SESSION["panier"] = array();
 			}
 		}
-		
+
 		public function estVide()
         {
             return empty($_SESSION["panier"]);
         }
-		
+
 		public function getQteTotale()
         {
             $resultat = 0;
@@ -32,12 +34,12 @@
 
             return $resultat;
         }
-		
+
 		public function getPrixTotalProduit($numProduit)
         {
             return $_SESSION["panier"][$numProduit]["quantite"] * $_SESSION["panier"][$numProduit]["prix"];
         }
-		
+
 		public function getPrixPanier()
         {
             $resultat = 0;
@@ -48,7 +50,7 @@
 
             return $resultat;
         }
-		
+
 		public function ajouterProduit(array $produit)
         {
             if(isset($_SESSION["panier"][$produit[0]]))
@@ -70,19 +72,21 @@
 
             header('Location: index.php?page=carte');
         }
-		
+
 		public function supprimerProduit(array $produit)
         {
             unset($_SESSION["panier"][$produit[0]]);
         }
-		
-		public function changerQuantiteProduit($libelleProduit, $quantite)
+
+		public function changerQuantiteProduit(array $produit, $quantite)
 		{
-			$positionProduit = array_search($libelleProduit,  $_SESSION["panier"]["libelle"]);
-			
-			if($positionProduit != false)
+			if(isset($_SESSION["panier"][$produit[0]]))
 			{
-				$_SESSION["panier"]["quantite"][$positionProduit] == $quantite;
+				$_SESSION["panier"][$produit[0]]["quantite"] += $quantite;
+        if($_SESSION["panier"][$produit[0]]["quantite"] <= 0)
+        {
+          $this->supprimerProduit($produit);
+        }
 			}
 			else
 			{

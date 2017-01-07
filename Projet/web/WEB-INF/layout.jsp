@@ -13,40 +13,23 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<meta name="description" content="sushis en ligne restauration rapide emporter livraison">
-		<meta name="author" content="Pierre-Elliott Thiboud - Axel BERTRAND - Thomas BROUTIER">
+		<meta name="author" content="Pierre-Elliott THIBOUD - Axel BERTRAND - Thomas BROUTIER">
 		<link rel="icon" href="images/logo_onglet.png">
-                <%! String contenu = (String)request.getParameter("contenu");
-                    String titre = (String)request.getParameter("titre");
-                    String incFile = (String)request.getParameter("includeFile");
-                %>
 
-		<title><% out.println(titre); %></title>
+		<title>${ titre }</title>
 
-		<% //require("bootstrapCss.php"); %>
+                <%@ include file="jspf/bootstrapCss.jspf" %>
 
 	</head>
 
 	<body>
-		<% //require("header.php"); %>
+                <%@ include file="jspf/header.jspf" %>
 
 		<div class="container-fluid">
-                        <% 
-                        if(request.getParameter("hasParameter") != null)
-                        {
-                            out.print("<jsp:include page='"+incFile+"'>");
-                            for(int i=0; i<1; i++)
-                            {
-                            out.print("<jsp:params></jsp:params>");
-                            }
-                            out.print("</jsp:include>");
-                        }
-                        else
-                        {
-                        out.print("<jsp:include page='"+incFile+"'/>");
-                        }%>
+                        
 		</div>
 
 
-		<% //require("footer.php"); %>
+                <%@ include file="jspf/footer.jspf" %>
 	</body>
 </html>

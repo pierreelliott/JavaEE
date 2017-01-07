@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,48 +31,50 @@ public class ServletControleurPrincipal extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String page = request.getParameter("page");
-        if(page == null || page.equals("index") || page.equals("accueil"))
+        if(page == null || page.equals("index"))
         {
-            //Rediriger vers la page d'accueil
+            page = "accueil";
         }
-        else
+        switch(page)
         {
-            switch(page)
-            {
-		case "carte": case "Carte":
-			//
-			break;
-		case "produit": case "Produit":
-			//
-			break;
-		case "connexion":
-			//
-			break;
-		case "utilisateur":
-			//
-			break;
-		case "deconnexion":
-			//
-			break;
-		case "inscription":			
-			//
-			break;
-		case "panier":
-			//
-			break;
-		case "accueil":
-			//
-			break;
-		case "administration":
-		default:
-			//
-			break;
-            }
+            case "carte": case "Carte":
+                    //
+                    break;
+            case "produit": case "Produit":
+                    //
+                    break;
+            case "connexion":
+                    //
+                    break;
+            case "utilisateur":
+                    //
+                    break;
+            case "deconnexion":
+                    //
+                    break;
+            case "inscription":			
+                    //
+                    break;
+            case "panier":
+                    //
+                    break;
+            case "accueil":
+                    //
+                    break;
+            case "administration":
+            default:
+                    //
+                    break;
         }
         String titre = "Coucou";
         String contenu = "<h1>Me voici ! :)</h1>";
         request.setAttribute("titre", titre);
         request.setAttribute("contenu", contenu);
+        
+        HttpSession session = request.getSession(true);
+        if(session.isNew()) session.setAttribute("connecte", false);
+        
+        
         this.getServletContext().getRequestDispatcher( "/WEB-INF/layout.jsp" ).forward( request, response );
         
         response.setContentType("text/html;charset=UTF-8");

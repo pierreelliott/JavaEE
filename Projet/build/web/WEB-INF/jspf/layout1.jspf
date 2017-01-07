@@ -1,0 +1,28 @@
+<%-- 
+    Document   : layout
+    Created on : 5 janv. 2017, 17:10:11
+    Author     : Pierre-Elliott
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="sushis en ligne restauration rapide emporter livraison">
+		<meta name="author" content="Pierre-Elliott THIBOUD - Axel BERTRAND - Thomas BROUTIER">
+		<link rel="icon" href="images/logo_onglet.png">
+
+		<title>${ titre }</title>
+
+                <%@ include file="bootstrapCss.jspf" %>
+
+	</head>
+
+	<body>
+                <%@ include file="header.jspf" %>
+
+		<div class="container-fluid">
