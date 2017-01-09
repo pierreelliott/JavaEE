@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html xmlns:tiles="http://tiles.apache.org/tags-tiles">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,20 +16,22 @@
 		<meta name="author" content="Pierre-Elliott THIBOUD - Axel BERTRAND - Thomas BROUTIER">
 		<link rel="icon" href="images/logo_onglet.png">
 
-		<title>${ titre }</title>
+		<title>Coucou</title>
 
                 <%@ include file="jspf/bootstrapCss.jspf" %>
-
 	</head>
 
 	<body>
-                <%@ include file="jspf/header.jspf" %>
+                <jsp:include page="jspf/header.jspf" />
 
 		<div class="container-fluid">
-                        
+                    <tiles:insertAttribute name="accueil.jsp" />
+                    Coucou
 		</div>
 
 
-                <%@ include file="jspf/footer.jspf" %>
+                <jsp:include page="jspf/footer.jspf" />
+                <jsp:include page="jspf/bootstrapJavascript.jspf" />
+                <jsp:include page="jspf/appelPages.jspf" />
 	</body>
 </html>
