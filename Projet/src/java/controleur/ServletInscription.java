@@ -6,6 +6,7 @@
 package controleur;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,9 +15,9 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Pierre-Elliott
+ * @author p1402690
  */
-public class ServletControleurPrincipal extends HttpServlet {
+public class ServletInscription extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,43 +30,16 @@ public class ServletControleurPrincipal extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        //if(session.isNew()) session.setAttribute("estConnecte", false);
+        HttpSession session = request.getSession(true);
+        if(session.isNew()) session.setAttribute("estConnecte", false);
         
-        String page = request.getParameter("page");
-        if(page == null || page.equals("index"))
+        if((boolean)session.getAttribute("estConnecte"))
         {
-            page = "accueil";
+            
         }
-        switch(page)
+        else
         {
-            case "carte": case "Carte":
-                this.getServletContext().getRequestDispatcher( "/carte" ).forward( request, response );
-                break;
-            case "produit": case "Produit":
-                this.getServletContext().getRequestDispatcher( "/produit" ).forward( request, response );
-                break;
-            case "connexion":
-                this.getServletContext().getRequestDispatcher( "/connexion" ).forward( request, response );
-                break;
-            case "utilisateur":
-                this.getServletContext().getRequestDispatcher( "/utilisateur" ).forward( request, response );
-                break;
-            case "deconnexion":
-                //
-                break;
-            case "inscription":			
-                this.getServletContext().getRequestDispatcher( "/inscription" ).forward( request, response );
-                break;
-            case "panier":
-                this.getServletContext().getRequestDispatcher( "/panier" ).forward( request, response );
-                break;
-            case "accueil":
-            default:
-                request.setAttribute("titrePage", "Accueil");
-                request.setAttribute("afficherPage", "pages/accueil.jsp");
-                this.getServletContext().getRequestDispatcher( "/WEB-INF/layout.jsp" ).forward( request, response );
-                break;
+            
         }
     }
 

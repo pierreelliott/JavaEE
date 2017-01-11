@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html xmlns:tiles="http://tiles.apache.org/tags-tiles">
 	<head>
@@ -16,17 +17,16 @@
 		<meta name="author" content="Pierre-Elliott THIBOUD - Axel BERTRAND - Thomas BROUTIER">
 		<link rel="icon" href="images/logo_onglet.png">
 
-		<title>Coucou</title>
+		<title>${requestScope.titrePage}</title>
 
-                <%@ include file="jspf/bootstrapCss.jspf" %>
+                <jsp:include page="jspf/bootstrapCss.jspf" />
 	</head>
 
 	<body>
                 <jsp:include page="jspf/header.jspf" />
 
 		<div class="container-fluid">
-                    <tiles:insertAttribute name="accueil.jsp" />
-                    Coucou
+                    <jsp:include page="${requestScope.afficherPage}" />
 		</div>
 
 
