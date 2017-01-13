@@ -19,14 +19,13 @@
                     </thead>
                     <c:forEach items="${ carte.produits }" var="produit">
                         <tr>
-                            <td><a href="accueil?page=produit&produit=${ produit.numProduit }">
-                                    ${ produit.libelle }</a></td>
+                            <td><a href="">${ produit.libelle }</a></td>
                             <td>${ produit.description }</td>
                             <td><img src='${ produit.sourceMoyen }' alt='Image du produit'></td>
                             <td>
-                                    <button type="button" data-action="ajout" data-produit="${ produit.numProduit },1" class="btn btn-primary">
-                                            <img title='Ajouter au panier' alt='Ajouter au panier' src='images/achat2.png'>
-                                    </button>
+                                <button type="button" data-action="ajout" data-produit="${ produit.numProduit },1" class="btn btn-primary">
+                                    <img title='Ajouter au panier' alt='Ajouter au panier' src='images/achat2.png'>
+                                </button>
                             </td>
                         </tr>
                     </c:forEach>

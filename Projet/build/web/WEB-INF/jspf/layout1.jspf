@@ -16,7 +16,7 @@
 		<meta name="author" content="Pierre-Elliott THIBOUD - Axel BERTRAND - Thomas BROUTIER">
 		<link rel="icon" href="images/logo_onglet.png">
 
-		<title>${ titre }</title>
+		<title>Sushinos - ${ titre }</title>
 
                 <%@ include file="bootstrapCss.jspf" %>
 

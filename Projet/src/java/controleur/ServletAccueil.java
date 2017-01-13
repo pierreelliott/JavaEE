@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Pierre-Elliott
  */
-public class ServletControleurPrincipal extends HttpServlet {
+public class ServletAccueil extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,6 +32,11 @@ public class ServletControleurPrincipal extends HttpServlet {
         HttpSession session = request.getSession();
         //if(session.isNew()) session.setAttribute("estConnecte", false);
         
+        request.setAttribute("titrePage", "Accueil");
+        request.setAttribute("afficherPage", "pages/accueil.jsp");
+        this.getServletContext().getRequestDispatcher( "/WEB-INF/layout.jsp" ).forward( request, response );
+        
+        /*
         String page = request.getParameter("page");
         if(page == null || page.equals("index"))
         {
@@ -66,7 +71,7 @@ public class ServletControleurPrincipal extends HttpServlet {
                 request.setAttribute("afficherPage", "pages/accueil.jsp");
                 this.getServletContext().getRequestDispatcher( "/WEB-INF/layout.jsp" ).forward( request, response );
                 break;
-        }
+        }*/
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

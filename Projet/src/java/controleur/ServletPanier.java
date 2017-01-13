@@ -31,7 +31,12 @@ public class ServletPanier extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(true);
-        if(session.isNew()) session.setAttribute("estConnecte", false);
+        
+        request.setAttribute("titrePage", "Panier");
+        request.setAttribute("afficherPage", "pages/panier.jsp");
+        this.getServletContext().getRequestDispatcher( "/WEB-INF/layout.jsp" ).forward( request, response );
+        
+        /*if(session.isNew()) session.setAttribute("estConnecte", false);
         
         if((boolean)session.getAttribute("estConnecte"))
         {
@@ -40,7 +45,7 @@ public class ServletPanier extends HttpServlet {
         else
         {
             
-        }
+        }*/
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -4,8 +4,6 @@
     Author     : Pierre-Elliott
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html xmlns:tiles="http://tiles.apache.org/tags-tiles">
 	<head>
@@ -17,7 +15,7 @@
 		<meta name="author" content="Pierre-Elliott THIBOUD - Axel BERTRAND - Thomas BROUTIER">
 		<link rel="icon" href="images/logo_onglet.png">
 
-		<title>${requestScope.titrePage}</title>
+		<title>Sushinos - ${requestScope.titrePage}</title>
 
                 <jsp:include page="jspf/bootstrapCss.jspf" />
 	</head>

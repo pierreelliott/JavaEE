@@ -7,20 +7,20 @@
 
     <ul class="nav navbar-nav navbar-right">
         <c:choose>
-            <!-- Si l'utilisateur est connecté -->
             <c:when test="${ !empty sessionScope.estConnecte }">
+                <!-- Si l'utilisateur est connecté -->
                 <li class="dropdown">
-                        <a data-toggle="dropdown" href="#">${ sessionScope.pseudo }<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="utilisateur">Mon compte</a></li>
-                            <li><a href="panier">Consulter panier</a></li>
-                            <li class="divider"></li>
-                            <li><a href="javascript:go('deconnexion')">Déconnexion</a></li>
-                        </ul>
-                    </li>
+                    <a data-toggle="dropdown" href="#">${ sessionScope.pseudo }<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="utilisateur">Mon compte</a></li>
+                        <li><a href="panier">Consulter panier</a></li>
+                        <li class="divider"></li>
+                        <li><a href="javascript:go('deconnexion')">Déconnexion</a></li>
+                    </ul>
+                </li>
             </c:when>
-            <!-- Si l'utilisateur n'est pas connecté -->
             <c:otherwise>
+                <!-- Si l'utilisateur n'est pas connecté -->
                 <li><a href="connexion">Connexion</a></li>
             </c:otherwise>
         </c:choose>

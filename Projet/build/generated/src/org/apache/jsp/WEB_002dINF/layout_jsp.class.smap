@@ -1,0 +1,23 @@
+SMAP
+layout_jsp.java
+JSP
+*S JSP
+*F
++ 0 taglibs.jsp
+WEB-INF/taglibs.jsp
++ 1 layout.jsp
+WEB-INF/layout.jsp
+*L
+1:49,2
+5#1,13:51
+18:64,3
+19:67
+20:68,3
+21,3:71
+24:74,3
+25,2:77
+27:79,3
+28,3:82
+31,3:85,3
+34,2:94
+*E
