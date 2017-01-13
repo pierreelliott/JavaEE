@@ -1,7 +1,7 @@
 <?php
     require_once("Model.php");
 
-    class ProduitModel extends Model
+    class ProduitManager extends Model
     {
 		public function getInformationsProduit($numProduit)
 		{
@@ -44,6 +44,7 @@
 			}
 		}
 
+        //Supression d'un produit (Admin): Passage du prix en négatif
 		public function supprimerProduit($numProduit)
 		{
 			$produit = $this->getInformationsProduit($numProduit);
@@ -74,7 +75,10 @@
 
 		public function ajouterCompatibilite()
 		{
-
+            /* Exemple Un produit avec une sauce ou assaisonnement
+                    Plusieurs produits pour un menu une table Menu
+                    Plusieurs produits donnent des reductions
+                    Depends aussi de la categorie du produit par exempls accompagnement*/
 		}
 
 		/* ============= Fonctions sur la carte des produits ============= */
