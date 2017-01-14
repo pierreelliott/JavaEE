@@ -32,13 +32,42 @@ public class ServletConnexion extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(true);
         if(session.isNew()) session.setAttribute("estConnecte", false);
-        if((boolean)session.getAttribute("estConnecte"))
+        
+        if(session.getAttribute("utilisateur") != null)
         {
-            
+            //Supprimer la session et déconnecter l'utilisateur
         }
         else
         {
-            
+            String pseudo = (String)request.getAttribute("pseudo");
+            String mdp = (String)request.getAttribute("mdp");
+            if(pseudo != null && mdp != null)
+            {
+                //Tester les logins
+                boolean login = false;
+                if(login) //si logs valides
+                {
+                    /*
+                        Utilisateur utilisateur = new Utilisateur();
+                        utilisateur.charger(pseudo);
+                        session.setAttribute("utilisateur",utilisateur);
+                    */
+                    this.getServletContext().getRequestDispatcher( "accueil" ).forward( request, response );
+                }
+                else
+                {
+                    request.setAttribute("message", "Votre pseudo ou votre mot de passe est incorrect");
+                    request.setAttribute("titrePage", "Connexion");
+                    request.setAttribute("afficherPage", "pages/connexion.jsp");
+                    this.getServletContext().getRequestDispatcher( "/WEB-INF/layout.jsp" ).forward( request, response );
+                }
+            }
+            else
+            {
+                request.setAttribute("titrePage", "Connexion");
+                request.setAttribute("afficherPage", "pages/connexion.jsp");
+                this.getServletContext().getRequestDispatcher( "/WEB-INF/layout.jsp" ).forward( request, response );
+            }
         }
     }
 

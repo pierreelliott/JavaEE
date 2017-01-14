@@ -1,8 +1,3 @@
-<%-- 
-    Document   : accueil
-    Created on : 7 janv. 2017, 15:25:05
-    Author     : Pierre-Elliott
---%>
 <!-- ======== Début Code HTML ======== -->
 
     <div class="row">

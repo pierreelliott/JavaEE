@@ -7,15 +7,15 @@
 
     <ul class="nav navbar-nav navbar-right">
         <c:choose>
-            <c:when test="${ !empty sessionScope.estConnecte }">
+            <c:when test="${ sessionScope.utilisateur != null }">
                 <!-- Si l'utilisateur est connecté -->
                 <li class="dropdown">
-                    <a data-toggle="dropdown" href="#">${ sessionScope.pseudo }<b class="caret"></b></a>
+                    <a data-toggle="dropdown" href="#"><c:out value="${ sessionScope.utilisateur.pseudo }" default="Erreur"/><b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="utilisateur">Mon compte</a></li>
                         <li><a href="panier">Consulter panier</a></li>
                         <li class="divider"></li>
-                        <li><a href="javascript:go('deconnexion')">Déconnexion</a></li>
+                        <li><a href="connexion">Déconnexion</a></li>
                     </ul>
                 </li>
             </c:when>
@@ -28,12 +28,5 @@
 
         <li><a href="panier"><span class="glyphicon glyphicon-shopping-cart"></a></li>
     </ul>
-
-
-    <!--
-    <div class="dropbtn">
-        <p><img src="images/burger_menu.png" alt="dropbtn"/></p>
-    </div>
-    -->
 </nav>
 <!-- NAVBAR END -->

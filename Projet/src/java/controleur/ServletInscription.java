@@ -31,15 +31,34 @@ public class ServletInscription extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(true);
-        if(session.isNew()) session.setAttribute("estConnecte", false);
-        
-        if((boolean)session.getAttribute("estConnecte"))
+        if (session.isNew()) {
+            session.setAttribute("estConnecte", false);
+        }
+
+        String nom = getChamp(request,"nom");
+        String prenom = getChamp(request,"prenom");
+        String pseudo = getChamp(request,"pseudo");
+
+        String numRue = getChamp(request,"numRue");
+        String rue = getChamp(request,"rue");
+        String codePostal = getChamp(request,"codePostal");
+        String ville = getChamp(request,"ville");
+
+        String mail = getChamp(request,"email");
+        String telephone = getChamp(request,"tel");
+
+        String mdp = getChamp(request,"mdp");
+        String mdpConfirm = getChamp(request,"mdpConfirm");
+
+        if (nom != null && prenom != null && pseudo != null && mail != null && telephone != null && mdp != null && mdpConfirm != null)
         {
             
         }
         else
         {
-            
+            request.setAttribute("titrePage", "Inscription");
+            request.setAttribute("afficherPage", "pages/inscription.jsp");
+            this.getServletContext().getRequestDispatcher("/WEB-INF/layout.jsp").forward(request, response);
         }
     }
 
@@ -81,5 +100,64 @@ public class ServletInscription extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    
+    /*
+    private void validationNom(String nom) throws Exception {
+        if (nom != null) {
+            if (nom.length() < 2) {
+                throw new Exception("Le nom d'utilisateur doit contenir au moins 2 caractères.");
+            }
+        } else {
+            throw new Exception("Merci d'entrer un nom d'utilisateur.");
+        }
+    }
+    
+    private void validationPseudo(String pseudo) throws Exception {
+        if (pseudo != null) {
+            if (pseudo.length() < 2) {
+                throw new Exception("Le nom d'utilisateur doit contenir au moins 2 caractères.");
+            }
+        } else {
+            throw new Exception("Merci d'entrer un pseudo.");
+        }
+    }
+
+    private void validationPrenom(String prenom) throws Exception {
+        if (prenom != null && prenom.length() < 2) {
+            throw new Exception("Le prénom d'utilisateur doit contenir au moins 2 caractères.");
+        }
+    }
+
+    private void validationAdresse(String adresse) throws Exception {
+        if (adresse != null) {
+            if (adresse.length() < 10) {
+                throw new Exception("L'adresse de livraison doit contenir au moins 10 caractères.");
+            }
+        } else {
+            throw new Exception("Merci d'entrer une adresse de livraison.");
+        }
+    }
+
+    private void validationTelephone(String telephone) throws Exception {
+        if (telephone != null) {
+            if (!telephone.matches("^\\d+$")) {
+                throw new Exception("Le numéro de téléphone doit uniquement contenir des chiffres.");
+            } else if (telephone.length() < 4) {
+                throw new Exception("Le numéro de téléphone doit contenir au moins 4 chiffres.");
+            }
+        } else {
+            throw new Exception("Merci d'entrer un numéro de téléphone.");
+        }
+    }*/
+    
+    private static String getChamp( HttpServletRequest request, String nomChamp ) {
+        String valeur = request.getParameter( nomChamp );
+        if ( valeur == null || valeur.trim().length() == 0 ) {
+            return null;
+        } else {
+            return valeur;
+        }
+    }
 
 }

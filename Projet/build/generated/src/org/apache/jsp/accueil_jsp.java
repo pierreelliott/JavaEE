@@ -46,9 +46,7 @@ public final class accueil_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write('\r');
       out.write('\n');
-      out.write("\r\n");
       out.write("<!-- ======== Début Code HTML ======== -->\r\n");
       out.write("\r\n");
       out.write("    <div class=\"row\">\r\n");

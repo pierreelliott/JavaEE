@@ -17,6 +17,7 @@ public class Commande {
     private String typeCommande;
     private Date date;
     
+    private int nbProduits;
     private Map<Produit,Integer> produits; //Key => produit //Value => quantité
                                             // Mettre seulement le numProduit ?
     private int numRue;
@@ -58,6 +59,14 @@ public class Commande {
 
     public void setCodePostal(String codePostal) {
         this.codePostal = codePostal;
+    }
+    
+    public int getNbProduits() {
+        return nbProduits;
+    }
+
+    public void setNbProduits(int nbProduits) {
+        this.nbProduits = nbProduits;
     }
 
     public int getNumCommande() {

@@ -46,11 +46,11 @@ public final class layout_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write('\r');
       out.write('\n');
       out.write("\r\n");
       out.write("\r\n");
       out.write("<!DOCTYPE html>\r\n");
+      out.write("\r\n");
       out.write("<html xmlns:tiles=\"http://tiles.apache.org/tags-tiles\">\r\n");
       out.write("\t<head>\r\n");
       out.write("\t\t<meta charset=\"utf-8\">\r\n");
@@ -61,7 +61,7 @@ public final class layout_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t<meta name=\"author\" content=\"Pierre-Elliott THIBOUD - Axel BERTRAND - Thomas BROUTIER\">\r\n");
       out.write("\t\t<link rel=\"icon\" href=\"images/logo_onglet.png\">\r\n");
       out.write("\r\n");
-      out.write("\t\t<title>");
+      out.write("\t\t<title>Sushinos - ");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${requestScope.titrePage}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</title>\r\n");
       out.write("\r\n");
