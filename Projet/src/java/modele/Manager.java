@@ -10,7 +10,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import modele.beans.*;
 
 /**
@@ -131,40 +133,76 @@ public class Manager
     /* ###################################################################### */
     /* ============================ Commande ================================ */
     
-    public void ajouterCommande(Commande commande)
+    public void ajouterCommande(Commande comm) throws SQLException
     {
+        String requete = "insert into commande(typeCommande, numRue, rue, ville, codePostal, date)"+
+                        "values('À emporter', "+comm.getNumRue()+", "+comm.getRue()+", "+comm.getVille()+", "+comm.getCodePostal()+", CURDATE())";
+        lien.getLien(bdd).executeUpdate(requete);
         
+        for(Produit p : comm.getProduits().keySet())
+        {
+            requete = "insert into quantiteProduit (numCommande, numProduit, quantite) values ("+
+                    comm.getNumCommande()+","+p.getNumProduit()+","+comm.getProduits().get(p)+")";
+            lien.getLien(bdd).executeUpdate(requete);
+        }
     }
     
-    public void recupererCommandes(String pseudo) throws SQLException
+    public void recupererCommandes(Utilisateur user) throws SQLException
     {
         ResultSet resultat;
-        String requete = "select numCommande, numUser, typeCommande, numRue, rue, ville, codePostal, date from commande";
+        String requete = "select numCommande, typeCommande, numRue, rue, ville, codePostal, date from commande where numUser = "+user.getNumUser();
         
-        List<Produit> commandes = new ArrayList<>();
+        List<Commande> commandes = new ArrayList<>();
         
         resultat = lien.getLien(bdd).executeQuery(requete);
         while(resultat.next())
         {
-            int numProduit = resultat.getInt("numProduit");
-            String libelle = resultat.getString("libelle");
-            String description = resultat.getString("description");
-            int prix = resultat.getInt("prix");
-            String image = resultat.getString("image");
+            int numCommande = resultat.getInt("numCommande");
+            String typeCommande = resultat.getString("typeCommande");
+            String rue = resultat.getString("rue");
+            int numRue = resultat.getInt("numRue");
+            String ville = resultat.getString("ville");
+            String codePostal = resultat.getString("codePostal");
             
-            Produit prod = new Produit();
+            Commande comm = new Commande();
             
-            prod.setNumProduit(numProduit);
-            prod.setLibelle(libelle);
-            prod.setDescription(description);
-            prod.setPrix(prix);
-            prod.setImage(image);
+            comm.setNumCommande(numCommande);
+            comm.setTypeCommande(typeCommande);
+            comm.setNumRue(numRue);
+            comm.setRue(rue);
+            comm.setVille(ville);
+            comm.setCodePostal(codePostal);
             
-            carte.add(prod);
+            commandes.add(comm);
+        }
+        user.setCommandes(commandes);
+        
+        Carte carte = recupererCarte();
+        
+        for(Commande tmp : commandes)
+        {
+            Map<Produit,Integer> produits = new HashMap<>();
+            int nbProduits = 0;
+            
+            requete = "select numProduit, quantite from quantiteProduit where numCommande = "+tmp.getNumCommande();
+            
+            resultat = lien.getLien(bdd).executeQuery(requete);
+            while(resultat.next())
+            {
+                int numProduit = resultat.getInt("numProduit");
+                int quantite = resultat.getInt("quantite");
+                nbProduits += quantite;
+                
+                Produit prod = carte.getProduit(numProduit);
+
+                produits.put(prod, quantite);
+            }
+            
+            tmp.setProduits(produits);
+            tmp.setNbProduits(nbProduits);
         }
         
-        Carte c = new Carte();
-        c.setProduits(carte);
+        user.setCommandes(commandes);
     }
     
     /* ########################### Méthodes statiques ################################ */

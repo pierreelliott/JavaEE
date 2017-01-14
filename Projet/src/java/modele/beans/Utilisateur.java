@@ -8,6 +8,7 @@ package modele.beans;
 import java.util.ArrayList;
 import java.util.Date;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -28,7 +29,7 @@ public class Utilisateur implements Serializable {
     private String ville;
     private String codePostal;
     
-    private ArrayList<Commande> commandes;
+    private List<Commande> commandes;
 
     public int getNumUser() {
         return numUser;
@@ -118,11 +119,11 @@ public class Utilisateur implements Serializable {
         this.codePostal = codePostal;
     }
 
-    public ArrayList<Commande> getCommandes() {
+    public List<Commande> getCommandes() {
         return commandes;
     }
 
-    public void setCommandes(ArrayList<Commande> commandes) {
+    public void setCommandes(List<Commande> commandes) {
         this.commandes = commandes;
     }
 }

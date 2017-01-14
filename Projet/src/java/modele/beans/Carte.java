@@ -23,5 +23,11 @@ public class Carte implements Serializable {
         this.produits = produits;
     }
     
-    
+    public Produit getProduit(int numProduit)
+    {
+        for (Produit tmp : produits) {
+            if(tmp.getNumProduit() == numProduit) return tmp;
+        }
+        return null;
+    }
 }
