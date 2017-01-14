@@ -6,13 +6,13 @@
 package modele.beans;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.io.Serializable;
 
 /**
  *
  * @author p1402690
  */
-public class Panier {
+public class Panier implements Serializable {
     private ArrayList<Produit> produits;
 
     public ArrayList<Produit> getProduits() {

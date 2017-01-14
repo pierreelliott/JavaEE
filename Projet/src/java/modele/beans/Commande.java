@@ -7,12 +7,13 @@ package modele.beans;
 
 import java.util.Date;
 import java.util.Map;
+import java.io.Serializable;
 
 /**
  *
  * @author Pierre-Elliott
  */
-public class Commande {
+public class Commande implements Serializable {
     private int numCommande;
     private String typeCommande;
     private Date date;

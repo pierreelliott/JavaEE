@@ -6,12 +6,13 @@
 package modele.beans;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
 /**
  *
  * @author Pierre-Elliott
  */
-public class Carte {
+public class Carte implements Serializable {
     private ArrayList<Produit> produits;
 
     public ArrayList<Produit> getProduits() {

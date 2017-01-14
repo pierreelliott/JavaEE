@@ -12,7 +12,8 @@ package modele.beans;
 import java.io.Serializable;
 import java.sql.*;
 
-public class DBConnexion implements java.io.Serializable {
+// Je crois que l'objet Connnection n'est pas serializable (à voir)
+public class Modele implements Serializable {
 //Définitiondespropriétés
 
     private String login;

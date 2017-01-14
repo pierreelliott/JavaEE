@@ -7,12 +7,13 @@ package modele.beans;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.io.Serializable;
 
 /**
  *
  * @author Pierre-Elliott
  */
-public class Utilisateur {
+public class Utilisateur implements Serializable {
     private int numUser;
     private String typeUser;
     

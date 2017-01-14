@@ -5,11 +5,13 @@
  */
 package modele.beans;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Pierre-Elliott
  */
-public class Produit {
+public class Produit implements Serializable {
     private int numProduit;
     private String typeProduit;
     
