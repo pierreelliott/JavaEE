@@ -1,0 +1,94 @@
+/*==============================================================*/
+/* DBMS name:      MySQL 5.0                                    */
+/* Created on:     08/11/2016 13:30:17                          */
+/*==============================================================*/
+
+/*drop table COMMANDE CASCADE CONSTRAINTS;
+
+drop table PRODUIT CASCADE CONSTRAINTS;
+
+drop table QUANTITEPRODUIT CASCADE CONSTRAINTS;
+
+drop table UTILISATEUR CASCADE CONSTRAINTS;*/
+
+/*==============================================================*/
+/* Table: commande                                              */
+/*==============================================================*/
+create table COMMANDE
+(
+   NUMCOMMANDE          int not null GENERATED ALWAYS AS IDENTITY (START WITH 1),
+   RUE                  varchar(250),
+   DATE                 date,
+   VILLE                varchar(200),
+   NUMRUE               numeric(8,0),
+   CODEPOSTAL           varchar(6),
+   TYPECOMMANDE         varchar(200) not null,
+   NUMUSER              integer not null,
+   primary key (NUMCOMMANDE)
+);
+
+/*==============================================================*/
+/* Table: produit                                               */
+/*==============================================================*/
+create table PRODUIT
+(
+   NUMPRODUIT           int not null GENERATED ALWAYS AS IDENTITY (START WITH 1),
+   DESCRIPTION          varchar(512) not null,
+   PRIX                 numeric(8,0) not null,
+   TYPEPRODUIT          varchar(50) not null,
+   LIBELLE              varchar(50) not null,
+   primary key (NUMPRODUIT)
+);
+
+/*==============================================================*/
+/* Table: quantiteProduit                                       */
+/*==============================================================*/
+create table QUANTITEPRODUIT
+(
+   NUMCOMMANDE          int not null,
+   NUMPRODUIT           int not null,
+   QUANTITE             int,
+   primary key (NUMCOMMANDE, NUMPRODUIT)
+);
+
+/*==============================================================*/
+/* Table: typeProduit                                           */
+/*==============================================================*/
+create table TYPEPRODUIT
+(
+   LIBELLE              varchar(50) not null,
+   primary key (LIBELLE)
+);
+
+/*==============================================================*/
+/* Table: utilisateur                                           */
+/*==============================================================*/
+create table UTILISATEUR
+(
+   NUMUSER              int not null GENERATED ALWAYS AS IDENTITY (START WITH 1),
+   NOM                  varchar(20) not null,
+   PRENOM               varchar(20) not null,
+   MAIL                 varchar(50) not null,
+   VILLE                varchar(200),
+   RUE                  varchar(250),
+   CODEPOSTAL           varchar(6),
+   TELEPHONE            varchar(11) not null,
+   TYPEUSER             varchar(20) not null,
+   PSEUDO               varchar(25) not null,
+   MDP                  varchar(1024) not null,
+   NUMRUE               varchar(100),
+   DATEINSCRIPTION      date,
+   primary key (NUMUSER)
+);
+
+alter table commande add constraint FK_REFERENCE_12 foreign key (NUMUSER)
+      references utilisateur (NUMUSER) on delete restrict on update restrict;
+
+alter table produit add constraint FK_APPARTIENT foreign key (TYPEPRODUIT)
+      references typeProduit (LIBELLE) on delete restrict on update restrict;
+
+alter table quantiteProduit add constraint FK_CONTIENT foreign key (NUMPRODUIT)
+      references produit (NUMPRODUIT) on delete restrict on update restrict;
+
+alter table quantiteProduit add constraint FK_CONTIENT2 foreign key (NUMCOMMANDE)
+      references commande (NUMCOMMANDE) on delete restrict on update restrict;

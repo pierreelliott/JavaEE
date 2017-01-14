@@ -6,7 +6,6 @@
 package controleur;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,17 +34,6 @@ public class ServletPanier extends HttpServlet {
         request.setAttribute("titrePage", "Panier");
         request.setAttribute("afficherPage", "pages/panier.jsp");
         this.getServletContext().getRequestDispatcher( "/WEB-INF/layout.jsp" ).forward( request, response );
-        
-        /*if(session.isNew()) session.setAttribute("estConnecte", false);
-        
-        if((boolean)session.getAttribute("estConnecte"))
-        {
-            
-        }
-        else
-        {
-            
-        }*/
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

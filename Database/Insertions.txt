@@ -1,0 +1,68 @@
+/* Table Utilisateur */
+insert into UTILISATEUR ("NOM", "PRENOM","MAIL", "VILLE", "RUE", 
+"CODEPOSTAL", "TELEPHONE", "TYPEUSER", "PSEUDO", "MDP", "NUMRUE")
+values 
+('Menvu','Gérard','adr@mail.fr',null,null,null,'0404040404','ADMIN','
+gmenvu','1234', null);
+insert into UTILISATEUR ("NOM", "PRENOM","MAIL", "VILLE", "RUE", 
+"CODEPOSTAL", "TELEPHONE", "TYPEUSER", "PSEUDO", "MDP", "NUMRUE")
+values 
+('Atan','Charles','addmail.en',null,null,null,'0505050505','USER','ca
+tan','2345', null);
+insert into UTILISATEUR ("NOM", "PRENOM","MAIL", "VILLE", "RUE", 
+"CODEPOSTAL", "TELEPHONE", "TYPEUSER", "PSEUDO", "MDP", "NUMRUE")
+values 
+('Doeuf','John','ddd@mail.us',null,null,null,'0202020202','USER','jdo
+euf','3456',null);
+insert into UTILISATEUR ("NOM", "PRENOM","MAIL", "VILLE", "RUE", 
+"CODEPOSTAL", "TELEPHONE", "TYPEUSER", "PSEUDO", "MDP", "NUMRUE")
+values ('Pietrac','Nicolas','aha@mail.net','Ploubelec','rue des 
+Alouettes','14100','0606060606','USER','npietrac','4567', '42');
+
+
+
+/* Table TypeProduit */
+insert into TYPEPRODUIT ("LIBELLE") values ('Sushi');
+insert into TYPEPRODUIT ("LIBELLE") values ('Sauce');
+insert into TYPEPRODUIT ("LIBELLE") values ('Accompagnement');
+insert into TYPEPRODUIT ("LIBELLE") values ('Maki');
+
+
+/* Table Produit 
+(numproduit,libelle,prix,description,typeproduit,numimage)*/
+insert into PRODUIT ("LIBELLE", "PRIX", "DESCRIPTION", "TYPEPRODUIT", 
+"IMAGE") values
+('Sushi noss',10,'Sushi au saumon','Sushi','img/sushi1.png');
+insert into PRODUIT ("LIBELLE", "PRIX", "DESCRIPTION", "TYPEPRODUIT", 
+"IMAGE") values
+('Ketchup',0.5,'Sauce de base','Sauce','img/ketchup.png');
+insert into PRODUIT ("LIBELLE", "PRIX", "DESCRIPTION", "TYPEPRODUIT", 
+"IMAGE") values
+('Rix titi',3,'Riz au lait','Accompagnement','img/rix.png');
+insert into PRODUIT ("LIBELLE", "PRIX", "DESCRIPTION", "TYPEPRODUIT", 
+"IMAGE") values
+('Makizu chichi',6,'Maki au poulet','Maki','img/maki.png');
+insert into PRODUIT ("LIBELLE", "PRIX", "DESCRIPTION", "TYPEPRODUIT", 
+"IMAGE") values
+('Sushi rah',5,'Sushi au cabillaud','Sushi','img/sushi2.png');
+insert into PRODUIT ("LIBELLE", "PRIX", "DESCRIPTION", "TYPEPRODUIT", 
+"IMAGE") values
+('Alges à gogo',9,'Boîte d algues rouges','Accompagnement','img/algues.png');
+
+/* Table Commande 
+(numcommande,date,codepostal,ville,rue,numrue,typecommande)*/
+/*insert into commande(Date, CodePostal, Ville, Rue, NumRue, 
+TypeCommande, NumUser) values
+("2015-10-02",null,null,null,null,"A emporter", 4),
+("2015-11-04", null,null, null,null, "A Emporter", 3),
+("2015-12-07", "07100", "Pietache", "Rue de l honneur", "35", 
+"Livraison", 2);*/
+
+
+/* Table QuantiteProduit */
+/*insert into quantiteProduit (NumCommande,NumProduit,Quantite)
+values
+(1,1,2), (1,2,1),
+(1,6,1), (2,3,4),
+(2,5,1), (3,4,2),
+(3,2,4), (3,3,2);*/
