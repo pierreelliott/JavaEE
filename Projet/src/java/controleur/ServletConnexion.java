@@ -7,11 +7,18 @@ package controleur;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modele.ConnexionBD;
 
 /**
  *
@@ -30,6 +37,17 @@ public class ServletConnexion extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        ConnexionBD bdd = new ConnexionBD();
+        Connection cnx = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        bdd.setLogin("p1503940");
+        bdd.setPassword("241638");
+        bdd.setHostname("localhost");
+        bdd.setPort("");
+        bdd.setNomDeLaBase("p1503940");
+        
         HttpSession session = request.getSession(true);
         if(session.isNew()) session.setAttribute("estConnecte", false);
         
@@ -39,10 +57,29 @@ public class ServletConnexion extends HttpServlet {
         }
         else
         {
-            String pseudo = getChamp(request,"pseudo");
-            String mdp = getChamp(request,"mdp");
+            String pseudo = (String)request.getAttribute("pseudo");
+            String mdp = (String)request.getAttribute("mdp");
             if(pseudo != null && mdp != null)
             {
+                cnx = bdd.getConnexion();
+                try
+                {
+                    ps = cnx.prepareStatement("select numUser, pseudo, mdp, nom, prenom, mail, telephone, numRue, rue, ville, codePostal, typeUser, dateInscription"
+                            + "from utilisateur where pseudo = ? and mdp = ?");
+                    ps.setString(1, pseudo);
+                    ps.setString(2, mdp);
+                    
+                    rs = ps.executeQuery();
+                    
+                    // Faut trouver le nombre de lignes renvoyées mais je sais plus comment faire
+                    //rs.
+                }
+                catch (SQLException ex)
+                {
+                    Logger.getLogger(ServletConnexion.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
                 //Tester les logins
                 boolean login = false;
                 if(login) //si logs valides
@@ -110,13 +147,4 @@ public class ServletConnexion extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private static String getChamp( HttpServletRequest request, String nomChamp ) {
-        String valeur = request.getParameter( nomChamp );
-        if ( valeur == null || valeur.trim().length() == 0 ) {
-            return null;
-        } else {
-            return valeur;
-        }
-    }
-    
 }

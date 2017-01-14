@@ -5,6 +5,7 @@
  */
 package modele.beans;
 
+import modele.ConnexionBD;
 import java.util.ArrayList;
 import java.io.Serializable;
 
@@ -13,6 +14,7 @@ import java.io.Serializable;
  * @author Pierre-Elliott
  */
 public class Carte implements Serializable {
+    private ConnexionBD bdd;
     private ArrayList<Produit> produits;
 
     public ArrayList<Produit> getProduits() {
