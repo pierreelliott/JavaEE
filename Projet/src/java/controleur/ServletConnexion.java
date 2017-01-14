@@ -33,6 +33,7 @@ public class ServletConnexion extends HttpServlet {
         HttpSession session = request.getSession(true);
         if(session.isNew()) session.setAttribute("estConnecte", false);
         
+        //Si la session contient un objet utilisateur, on déconnecte cet utilisateur
         if(session.getAttribute("utilisateur") != null)
         {
             //Supprimer la session et déconnecter l'utilisateur
@@ -49,7 +50,10 @@ public class ServletConnexion extends HttpServlet {
                 {
                     /*
                         Utilisateur utilisateur = new Utilisateur();
-                        utilisateur.charger(pseudo);
+                        
+                        utilisateur.charger(pseudo); //On récupère les informations liées à l'utilisateur
+                        //À voir comment on implémente ça
+                    
                         session.setAttribute("utilisateur",utilisateur);
                     */
                     this.getServletContext().getRequestDispatcher( "accueil" ).forward( request, response );

@@ -3,17 +3,14 @@
     <ul class="nav navbar-nav">
         <li><a href="accueil" id="active">Accueil</a></li>
         <li><a href="carte">Carte</a></li>
-        <c:out value="<li>Allo ! :)</li>"/>
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
-        <%
-            if(sessionScope.utilisateur != null)
-            {
-        %>
+        <c:choose>
+            <c:when test="${ !empty sessionScope.utilisateur }">
                 <!-- Si l'utilisateur est connecté -->
                 <li class="dropdown">
-                    <a data-toggle="dropdown" href="#"><c:out value="${ sessionScope.utilisateur.pseudo }" default="Erreur"/><b class="caret"></b></a>
+                    <a data-toggle="dropdown" href="#"><c:out value="${ sessionScope.utilisateur.pseudo }"/><b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="utilisateur">Mon compte</a></li>
                         <li><a href="panier">Consulter panier</a></li>
@@ -21,14 +18,12 @@
                         <li><a href="connexion">Déconnexion</a></li>
                     </ul>
                 </li>
-        <%
-            }
-            else
-            {
-        %>
+            </c:when>
+            <c:otherwise>
                 <!-- Si l'utilisateur n'est pas connecté -->
                 <li><a href="connexion">Connexion</a></li>
-        <% } %>
+            </c:otherwise>
+        </c:choose>
         
 
         <li><a href="panier"><span class="glyphicon glyphicon-shopping-cart"></a></li>

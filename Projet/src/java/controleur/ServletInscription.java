@@ -31,9 +31,6 @@ public class ServletInscription extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(true);
-        if (session.isNew()) {
-            session.setAttribute("estConnecte", false);
-        }
 
         String nom = getChamp(request,"nom");
         String prenom = getChamp(request,"prenom");
@@ -49,10 +46,37 @@ public class ServletInscription extends HttpServlet {
 
         String mdp = getChamp(request,"mdp");
         String mdpConfirm = getChamp(request,"mdpConfirm");
+        
+        String message = "";
 
         if (nom != null && prenom != null && pseudo != null && mail != null && telephone != null && mdp != null && mdpConfirm != null)
         {
+            //Vérifier si pseudo n'est pas déjà pris
+            if(true) message += "Ce pseudonyme n'est pas disponible<br>";
             
+            //Vérifier si les mdp sont identiques
+            if(!mdp.equals(mdpConfirm)) message += "Les mots de passe ne sont pas identiques";
+            
+            //Si il y a eu une erreur, on redirige vers la page d'inscription en affichant le(s) message(s) d'erreur
+            if(message.equalsIgnoreCase(""))
+            {
+                request.setAttribute("message", message);
+                request.setAttribute("titrePage", "Inscription");
+                request.setAttribute("afficherPage", "pages/inscription.jsp");
+                this.getServletContext().getRequestDispatcher("/WEB-INF/layout.jsp").forward(request, response);
+            }
+            
+            if(numRue != null && rue != null && codePostal != null && ville != null)
+            {
+                //Ajouter utilisateur avec une adresse
+            }
+            else
+            {
+                //Ajouter utilisateur sans adresse
+            }
+            
+            //session.setAttribute("utilisateur",utilisateur);
+            //Connecter l'utilisateur
         }
         else
         {

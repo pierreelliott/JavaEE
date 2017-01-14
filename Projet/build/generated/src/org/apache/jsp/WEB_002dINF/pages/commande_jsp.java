@@ -70,7 +70,7 @@ public final class commande_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            ");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
-      out.write(">\n");
+      out.write("\n");
       out.write("        </div>\n");
       out.write("    </div>\n");
       out.write("</div>\n");
@@ -169,7 +169,7 @@ public final class commande_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_1 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_out_1.setPageContext(_jspx_page_context);
     _jspx_th_c_out_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
-    _jspx_th_c_out_1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${$commande.nbProduits}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${commande.nbProduits}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_out_1 = _jspx_th_c_out_1.doStartTag();
     if (_jspx_th_c_out_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_1);

@@ -34,7 +34,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-offset-4 col-md-4">
-                                <a href="/Projet/carte"  class="btn btn-md btn-default">Découvrir</a>
+                                <a href="carte"  class="btn btn-md btn-default">Découvrir</a>
                             </div>
                         </div>
                     </div>

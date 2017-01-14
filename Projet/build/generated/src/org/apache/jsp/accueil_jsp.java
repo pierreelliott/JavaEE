@@ -83,7 +83,7 @@ public final class accueil_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        </div>\r\n");
       out.write("                        <div class=\"row\">\r\n");
       out.write("                            <div class=\"col-md-offset-4 col-md-4\">\r\n");
-      out.write("                                <a href=\"/Projet/carte\"  class=\"btn btn-md btn-default\">Découvrir</a>\r\n");
+      out.write("                                <a href=\"carte\"  class=\"btn btn-md btn-default\">Découvrir</a>\r\n");
       out.write("                            </div>\r\n");
       out.write("                        </div>\r\n");
       out.write("                    </div>\r\n");

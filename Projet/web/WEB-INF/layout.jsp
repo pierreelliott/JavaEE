@@ -22,7 +22,7 @@
 	</head>
 
 	<body>
-                <jsp:include page="jspf/header.jspf" />
+                <jsp:include page="pages/header.jsp" />
 
 		<div class="container-fluid">
                     <jsp:include page="${requestScope.afficherPage}" />

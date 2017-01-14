@@ -71,7 +71,11 @@ public final class utilisateur_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("<div class=\"row\">\n");
       out.write("    <div class=\"col-lg-offset-3 col-lg-6 site-wrapper\">\n");
-      out.write("        <h1>Vos informations - <?php echo $nom.' '.$prenom; ?></h1>\n");
+      out.write("        <h1>Vos informations - ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sessionScope.utilisateur.nom}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write(' ');
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sessionScope.utilisateur.prenom}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</h1>\n");
       out.write("        <dl>\n");
       out.write("            <dt><span class=\"glyphicon glyphicon-user\"></span> Pseudo :</dt>\n");
       out.write("            <dd>");
@@ -155,7 +159,7 @@ public final class utilisateur_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_when_0 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _jspx_tagPool_c_when_test.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_when_0.setPageContext(_jspx_page_context);
     _jspx_th_c_when_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_choose_0);
-    _jspx_th_c_when_0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ !empty sessionScope.utilisateur.numRue && !empty sessionScope.utilisateur.rue \n                               && !empty sessionScope.utilisateur.codePostal && !empty sessionScope.utilisateur.ville}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
+    _jspx_th_c_when_0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ requestScope.adresse }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
     int _jspx_eval_c_when_0 = _jspx_th_c_when_0.doStartTag();
     if (_jspx_eval_c_when_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
