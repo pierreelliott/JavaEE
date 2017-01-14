@@ -12,16 +12,6 @@ import java.util.List;
  *
  * @author Pierre-Elliott
  */
-public class Carte implements Serializable {
-    private List<Produit> produits;
-
-    public List<Produit> getProduits() {
-        return produits;
-    }
-
-    public void setProduits(List<Produit> produits) {
-        this.produits = produits;
-    }
-    
-    
+public class Commandes implements Serializable {
+    private List<Commande> commandes;
 }

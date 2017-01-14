@@ -5,27 +5,27 @@
  */
 package modele.beans;
 
-import java.util.ArrayList;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
  * @author p1402690
  */
 public class Panier implements Serializable {
-    private ArrayList<Produit> produits;
+    private List<Produit> produits;
 
-    public ArrayList<Produit> getProduits() {
+    public List<Produit> getProduits() {
         return produits;
     }
 
-    public void setProduits(ArrayList<Produit> produits) {
+    public void setProduits(List<Produit> produits) {
         this.produits = produits;
     }
     
     public void ajouterProduit(Produit p)
     {
-        
+        produits.add(p);
     }
     
     public Produit getProduit(int numProduit)

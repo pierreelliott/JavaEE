@@ -125,56 +125,7 @@ public class ServletInscription extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    
-    /*
-    private void validationNom(String nom) throws Exception {
-        if (nom != null) {
-            if (nom.length() < 2) {
-                throw new Exception("Le nom d'utilisateur doit contenir au moins 2 caractères.");
-            }
-        } else {
-            throw new Exception("Merci d'entrer un nom d'utilisateur.");
-        }
-    }
-    
-    private void validationPseudo(String pseudo) throws Exception {
-        if (pseudo != null) {
-            if (pseudo.length() < 2) {
-                throw new Exception("Le nom d'utilisateur doit contenir au moins 2 caractères.");
-            }
-        } else {
-            throw new Exception("Merci d'entrer un pseudo.");
-        }
-    }
-
-    private void validationPrenom(String prenom) throws Exception {
-        if (prenom != null && prenom.length() < 2) {
-            throw new Exception("Le prénom d'utilisateur doit contenir au moins 2 caractères.");
-        }
-    }
-
-    private void validationAdresse(String adresse) throws Exception {
-        if (adresse != null) {
-            if (adresse.length() < 10) {
-                throw new Exception("L'adresse de livraison doit contenir au moins 10 caractères.");
-            }
-        } else {
-            throw new Exception("Merci d'entrer une adresse de livraison.");
-        }
-    }
-
-    private void validationTelephone(String telephone) throws Exception {
-        if (telephone != null) {
-            if (!telephone.matches("^\\d+$")) {
-                throw new Exception("Le numéro de téléphone doit uniquement contenir des chiffres.");
-            } else if (telephone.length() < 4) {
-                throw new Exception("Le numéro de téléphone doit contenir au moins 4 chiffres.");
-            }
-        } else {
-            throw new Exception("Merci d'entrer un numéro de téléphone.");
-        }
-    }*/
-    
+        
     private static String getChamp( HttpServletRequest request, String nomChamp ) {
         String valeur = request.getParameter( nomChamp );
         if ( valeur == null || valeur.trim().length() == 0 ) {

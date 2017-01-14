@@ -20,6 +20,7 @@ public class ConnexionBD implements Serializable {
     private String hostname;
     private String port;
     private String nomDeLaBase;
+    
     private Connection cnx;
     
     //Methodes d'accès en écriture

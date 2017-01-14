@@ -15,7 +15,6 @@ import java.io.Serializable;
  */
 public class Utilisateur implements Serializable {
     private int numUser;
-    private String typeUser;
     
     private String nom;
     private String prenom;
@@ -37,14 +36,6 @@ public class Utilisateur implements Serializable {
 
     public void setNumUser(int numUser) {
         this.numUser = numUser;
-    }
-
-    public String getTypeUser() {
-        return typeUser;
-    }
-
-    public void setTypeUser(String typeUser) {
-        this.typeUser = typeUser;
     }
 
     public String getNom() {

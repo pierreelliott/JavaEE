@@ -19,32 +19,14 @@ public class Produit implements Serializable {
     private float prix;
     private String description;
     
-    private String sourcePetit;
-    private String sourceMoyen;
-    private String sourceGrand;
-
-    public String getSourcePetit() {
-        return sourcePetit;
+    private String image;
+    
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public void setSourcePetit(String sourcePetit) {
-        this.sourcePetit = sourcePetit;
-    }
-
-    public String getSourceMoyen() {
-        return sourceMoyen;
-    }
-
-    public void setSourceMoyen(String sourceMoyen) {
-        this.sourceMoyen = sourceMoyen;
-    }
-
-    public String getSourceGrand() {
-        return sourceGrand;
-    }
-
-    public void setSourceGrand(String sourceGrand) {
-        this.sourceGrand = sourceGrand;
+    public String getImage() {
+        return image;
     }
 
     public int getNumProduit() {
