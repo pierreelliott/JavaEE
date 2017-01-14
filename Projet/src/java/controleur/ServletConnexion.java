@@ -39,8 +39,8 @@ public class ServletConnexion extends HttpServlet {
         }
         else
         {
-            String pseudo = (String)request.getAttribute("pseudo");
-            String mdp = (String)request.getAttribute("mdp");
+            String pseudo = getChamp(request,"pseudo");
+            String mdp = getChamp(request,"mdp");
             if(pseudo != null && mdp != null)
             {
                 //Tester les logins
@@ -110,4 +110,13 @@ public class ServletConnexion extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    private static String getChamp( HttpServletRequest request, String nomChamp ) {
+        String valeur = request.getParameter( nomChamp );
+        if ( valeur == null || valeur.trim().length() == 0 ) {
+            return null;
+        } else {
+            return valeur;
+        }
+    }
+    
 }

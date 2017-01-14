@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modele.beans.Utilisateur;
 
 /**
  *
@@ -30,15 +31,35 @@ public class ServletUtilisateur extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(true);
-        if(session.isNew()) session.setAttribute("estConnecte", false);
+        Utilisateur user = (Utilisateur)session.getAttribute("utilisateur");
         
-        if((boolean)session.getAttribute("estConnecte"))
+        if(user != null)
         {
+            int numRue = user.getNumRue();
+            String rue = user.getRue();
+            String codePostal = user.getCodePostal();
+            String ville = user.getVille();
             
+            if(numRue == 0 || rue.equalsIgnoreCase("") || codePostal.equalsIgnoreCase("") || ville.equalsIgnoreCase(""))
+            {
+                boolean adr = true;
+                request.setAttribute("adresse", adr);
+            }
+            else
+            {
+                boolean adr = true;
+                request.setAttribute("adresse", adr);
+            }
+            
+            request.setAttribute("titrePage", "Mon compte");
+            request.setAttribute("afficherPage", "pages/utilisateur.jsp");
+            this.getServletContext().getRequestDispatcher("/WEB-INF/layout.jsp").forward(request, response);
         }
         else
         {
-            
+            request.setAttribute("titrePage", "Accueil");
+            request.setAttribute("afficherPage", "pages/accueil.jsp");
+            this.getServletContext().getRequestDispatcher("/WEB-INF/layout.jsp").forward(request, response);
         }
     }
 

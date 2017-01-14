@@ -7,7 +7,7 @@
 
 <div class="row">
     <div class="col-lg-offset-3 col-lg-6 site-wrapper">
-        <h1>Vos informations - <?php echo $nom.' '.$prenom; ?></h1>
+        <h1>Vos informations - ${sessionScope.utilisateur.nom} ${sessionScope.utilisateur.prenom}</h1>
         <dl>
             <dt><span class="glyphicon glyphicon-user"></span> Pseudo :</dt>
             <dd>${sessionScope.utilisateur.pseudo}</dd>
@@ -17,8 +17,7 @@
             <dd>${sessionScope.utilisateur.telephone}</dd>
             <dt><span class="glyphicon glyphicon-map-marker"></span> Adresse :</dt>
             <dd><c:choose>
-                    <c:when test="${ !empty sessionScope.utilisateur.numRue && !empty sessionScope.utilisateur.rue 
-                               && !empty sessionScope.utilisateur.codePostal && !empty sessionScope.utilisateur.ville}">
+                    <c:when test="${ requestScope.adresse }">
                         <c:out value="${sessionScope.utilisateur.numRue} ${sessionScope.utilisateur.rue} ${sessionScope.utilisateur.codePostal} ${sessionScope.utilisateur.ville}"/>
                     </c:when>
                     <c:otherwise>

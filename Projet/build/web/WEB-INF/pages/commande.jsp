@@ -15,11 +15,11 @@
                         <h1>Commande du <c:out value="${commande.date}"/></h1>
                     </div>
                     <div class="media-body">
-                        <p class="lead">Nombre de produits : <c:out value="${$commande.nbProduits}"/> €</p>
+                        <p class="lead">Nombre de produits : <c:out value="${commande.nbProduits}"/> €</p>
                         <p class="lead">Prix de la commande : <c:out value="${commande.prix}"/> €</p>
                     </div>
                 </div>
-            </c:forEach>>
+            </c:forEach>
         </div>
     </div>
 </div>
