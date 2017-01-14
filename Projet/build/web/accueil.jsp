@@ -9,13 +9,13 @@
         <div class="col-md-2 hidden-sm hidden-xs">
             <div class="row">
                 <aside class="col-md-12">
-                    Aside
+                    
                 </aside>
             </div>
         </div>
         <div class="col-md-8 col-xs-12">
             <div class="row">
-                <div class="col-md-12 hidden-sm hidden-xs">
+                <!--<div class="col-md-12 hidden-sm hidden-xs">
                     <div id="carousel" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
                             <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -28,7 +28,7 @@
                             <div class="item"><img src="images/fond_index.jpg" alt=""></div>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <div class="col-md-12">
                     <div class="site-wrapper">
                         <div class="row">
@@ -39,7 +39,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-offset-4 col-md-4">
-                                <a href="javascript:go('carte')"  class="btn btn-md btn-default">Découvrir</a>
+                                <a href="/Projet/carte"  class="btn btn-md btn-default">Découvrir</a>
                             </div>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
         <div class="col-md-2 hidden-sm hidden-xs">
             <div class="row">
                 <aside class="col-md-12">
-                    Aside
+                    
                 </aside>
             </div>
         </div>

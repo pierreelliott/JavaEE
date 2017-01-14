@@ -4,9 +4,6 @@
 
 
 	# On crée un formulaire invisible pour demander l'appel d'une page
-	/*if(isset($_POST["page"])) $page = $_POST["page"];
-	else $page = "accueil";*/
-	# Pas utilisé mais je le laisse ici parce que je pense que ça pourrait être intéressant de le mettre en place
 
 	if(isset($_POST["page"]))
 	{
@@ -40,11 +37,6 @@
 			$carte->carte();
 			break;
 
-		case "produit":
-			if(isset($_GET["produit"])) $carte->afficherProduit($_GET["produit"]);
-			else include_once("vue/404.php");
-			break;
-
 		case "connexion":
 			$connexion->connexion();
 			break;
@@ -70,6 +62,16 @@
 			include_once("vue/accueil.php");
 			break;
 
+		case "contact":
+			include_once("vue/contact.php");
+			break;
+
+		case "avis":
+			include_once("vue/avis.php");
+			break;
+
+		case "commande":
+		case "historiqueCommandes":
 		case "administration":
 		default:
 			include_once("vue/404.php");
