@@ -16,7 +16,7 @@ public class Produit implements Serializable {
     private String typeProduit;
     
     private String libelle;
-    private int prix;
+    private float prix;
     private String description;
     
     private String sourcePetit;
@@ -71,11 +71,11 @@ public class Produit implements Serializable {
         this.libelle = libelle;
     }
 
-    public int getPrix() {
+    public float getPrix() {
         return prix;
     }
 
-    public void setPrix(int prix) {
+    public void setPrix(float prix) {
         this.prix = prix;
     }
 
@@ -86,6 +86,4 @@ public class Produit implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    
 }
