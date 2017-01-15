@@ -6,12 +6,16 @@
 package controleur;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modele.Manager;
+import modele.beans.Carte;
 
 /**
  *
@@ -33,6 +37,18 @@ public class ServletCarte extends HttpServlet {
         HttpSession session = request.getSession();
         //if(session.isNew()) session.setAttribute("estConnecte", false);
         
+        Manager man = new Manager();
+        Carte carte = null;
+        try {
+            carte = man.recupererCarte();
+        } catch (SQLException ex) {
+            request.setAttribute("titrePage", "Carte");
+            request.setAttribute("afficherPage", "pages/carte.jsp");
+            this.getServletContext().getRequestDispatcher( "/WEB-INF/layout.jsp" ).forward( request, response );
+        }
+        request.setAttribute("carte", carte);
+        
+        request.setAttribute("carte", carte);
         request.setAttribute("titrePage", "Carte");
         request.setAttribute("afficherPage", "pages/carte.jsp");
         this.getServletContext().getRequestDispatcher( "/WEB-INF/layout.jsp" ).forward( request, response );

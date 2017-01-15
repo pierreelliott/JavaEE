@@ -93,6 +93,23 @@ public class Manager
         }
     }
     
+    public boolean inscription(String pseudo, String mdp, String nom, String prenom, String mail, String tel) throws SQLException
+    {
+        String requete;
+        if(existe(pseudo))
+        {
+            return false;
+        }
+        else
+        {
+            requete = "insert into utilisateur(pseudo, mdp, nom, prenom, mail, telephone, numRue, rue, ville, codePostal, typeUser, dateInscription)"+
+                        "values("+pseudo+", "+mdp+", "+nom+", "+prenom+", "+mail+", "+tel+", null, null, null, null, 'USER', CURDATE())";
+            lien.getLien(bdd).executeUpdate(requete);
+            
+            return true;
+        }
+    }
+    
     public Utilisateur connexion(String pseudo, String mdp) throws SQLException
     {
         ResultSet res;

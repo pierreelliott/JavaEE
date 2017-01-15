@@ -6,19 +6,14 @@
 package controleur;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import modele.ConnexionBD;
+import modele.Manager;
+import modele.beans.Utilisateur;
 
 /**
  *
@@ -37,61 +32,38 @@ public class ServletConnexion extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ConnexionBD bdd = new ConnexionBD();
-        Connection cnx = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        
-        bdd.setLogin("p1503940");
-        bdd.setPassword("241638");
-        bdd.setHostname("localhost");
-        bdd.setPort("");
-        bdd.setNomDeLaBase("p1503940");
-        
         HttpSession session = request.getSession(true);
         
         //Si la session contient un objet utilisateur, on déconnecte cet utilisateur
         if(session.getAttribute("utilisateur") != null)
         {
-            //Supprimer la session et déconnecter l'utilisateur
+            session.removeAttribute("utilisateur");
+            session.invalidate();
         }
         else
         {
+            Manager man = new Manager();
+            
             String pseudo = getChamp(request,"pseudo");
             String mdp = getChamp(request,"mdp");
             if(pseudo != null && mdp != null)
             {
-                cnx = bdd.getConnexion();
+                Utilisateur user = null;
                 try
                 {
-                    ps = cnx.prepareStatement("select numUser, pseudo, mdp, nom, prenom, mail, telephone, numRue, rue, ville, codePostal, typeUser, dateInscription"
-                            + "from utilisateur where pseudo = ? and mdp = ?");
-                    ps.setString(1, pseudo);
-                    ps.setString(2, mdp);
-                    
-                    rs = ps.executeQuery();
-                    
-                    // Faut trouver le nombre de lignes renvoyées mais je sais plus comment faire
-                    //rs.
+                    user = man.connexion(pseudo, mdp);
                 }
                 catch (SQLException ex)
                 {
-                    Logger.getLogger(ServletConnexion.class.getName()).log(Level.SEVERE, null, ex);
+                    request.setAttribute("message", "Votre pseudo ou votre mot de passe est incorrect");
+                    request.setAttribute("titrePage", "Connexion");
+                    request.setAttribute("afficherPage", "pages/connexion.jsp");
+                    this.getServletContext().getRequestDispatcher( "/WEB-INF/layout.jsp" ).forward( request, response );
                 }
                 
-                
-                //Tester les logins
-                boolean login = false;
-                if(login) //si logs valides
+                if(user != null) //si logs valides
                 {
-                    /*
-                        Utilisateur utilisateur = new Utilisateur();
-                        
-                        utilisateur.charger(pseudo); //On récupère les informations liées à l'utilisateur
-                        //À voir comment on implémente ça
-                    
-                        session.setAttribute("utilisateur",utilisateur);
-                    */
+                    session.setAttribute("utilisateur",user);
                     this.getServletContext().getRequestDispatcher( "accueil" ).forward( request, response );
                 }
                 else
@@ -100,7 +72,7 @@ public class ServletConnexion extends HttpServlet {
                     request.setAttribute("titrePage", "Connexion");
                     request.setAttribute("afficherPage", "pages/connexion.jsp");
                     this.getServletContext().getRequestDispatcher( "/WEB-INF/layout.jsp" ).forward( request, response );
-                }
+                }                
             }
             else
             {
@@ -151,7 +123,11 @@ public class ServletConnexion extends HttpServlet {
     }// </editor-fold>
 
     private static String getChamp( HttpServletRequest request, String nomChamp ) {
-        String valeur = request.getParameter( nomChamp );
+        String valeur;
+        if((boolean)request.getAttribute("redirection"))
+            valeur = request.getParameter( nomChamp );
+        else
+            valeur = (String)request.getAttribute( nomChamp );
         if ( valeur == null || valeur.trim().length() == 0 ) {
             return null;
         } else {

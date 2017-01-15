@@ -7,11 +7,13 @@ package controleur;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modele.Manager;
 
 /**
  *
@@ -58,7 +60,7 @@ public class ServletInscription extends HttpServlet {
             if(!mdp.equals(mdpConfirm)) message += "Les mots de passe ne sont pas identiques";
             
             //Si il y a eu une erreur, on redirige vers la page d'inscription en affichant le(s) message(s) d'erreur
-            if(message.equalsIgnoreCase(""))
+            if(!message.equalsIgnoreCase(""))
             {
                 request.setAttribute("message", message);
                 request.setAttribute("titrePage", "Inscription");
@@ -66,17 +68,37 @@ public class ServletInscription extends HttpServlet {
                 this.getServletContext().getRequestDispatcher("/WEB-INF/layout.jsp").forward(request, response);
             }
             
-            if(numRue != null && rue != null && codePostal != null && ville != null)
-            {
-                //Ajouter utilisateur avec une adresse
-            }
-            else
-            {
-                //Ajouter utilisateur sans adresse
+            boolean statut;
+            Manager man = new Manager();
+            
+            try {
+                if(numRue != null && rue != null && codePostal != null && ville != null)
+                {
+                    //Ajouter utilisateur avec une adresse
+                    statut = man.inscription(pseudo, mdp, nom, prenom, mail, telephone, Integer.parseInt(numRue), rue, ville, codePostal);
+                }
+                else
+                {
+                    //Ajouter utilisateur sans adresse
+                    statut = man.inscription(pseudo, mdp, nom, prenom, mail, telephone);
+                }
+            } catch (SQLException e) {
+                statut = false;
             }
             
-            //session.setAttribute("utilisateur",utilisateur);
-            //Connecter l'utilisateur
+            if(!statut)
+            {
+                request.setAttribute("message", "Erreur lors de l'inscription. Veuillez réessayer.");
+                request.setAttribute("titrePage", "Inscription");
+                request.setAttribute("afficherPage", "pages/inscription.jsp");
+                this.getServletContext().getRequestDispatcher("/WEB-INF/layout.jsp").forward(request, response);
+            }
+            
+            request.setAttribute("redirection", true);
+            request.setAttribute("pseudo", pseudo);
+            request.setAttribute("mdp", mdp);
+            
+            this.getServletContext().getRequestDispatcher("connexion").forward(request, response);
         }
         else
         {

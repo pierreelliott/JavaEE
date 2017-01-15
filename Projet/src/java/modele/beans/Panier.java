@@ -6,32 +6,50 @@
 package modele.beans;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Map;
 
 /**
  *
  * @author p1402690
  */
 public class Panier implements Serializable {
-    private List<Produit> produits;
 
-    public List<Produit> getProduits() {
+    private Map<Produit,Integer> produits;
+
+    public Map<Produit,Integer> getProduits() {
         return produits;
     }
 
-    public void setProduits(List<Produit> produits) {
+    public void setProduits(Map<Produit,Integer> produits) {
         this.produits = produits;
     }
-    
-    public void ajouterProduit(Produit p)
-    {
-        produits.add(p);
+
+    public void addProduit(Produit p, int qte) {
+        produits.put(p,qte);
     }
     
-    public Produit getProduit(int numProduit)
-    {
-        for (Produit tmp : produits) {
-            if(tmp.getNumProduit() == numProduit) return tmp;
+    public void modifProduit(Produit p, int qte) {
+        produits.replace(p, qte);
+    }
+
+    public boolean removeProduit(Produit p) {
+        return (produits.remove(p) != 0);
+    }
+
+    public Produit getProduit(int numProduit) {
+        for (Produit tmp : produits.keySet()) {
+            if (tmp.getNumProduit() == numProduit) {
+                return tmp;
+            }
+        }
+        return null;
+    }
+    
+    public Produit getProduit(Produit p) {
+        for (Produit tmp : produits.keySet()) {
+            if (tmp.equals(p)) {
+                return tmp;
+            }
         }
         return null;
     }

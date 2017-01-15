@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/controleur/ServletConnexion.java</file>
+            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/modele/beans/Carte.java</file>
+            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/controleur/ServletInscription.java</file>
+            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/modele/beans/Utilisateur.java</file>
+            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/controleur/ServletUtilisateur.java</file>
+            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/controleur/ServletPanier.java</file>
+            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/modele/Manager.java</file>
+            <file>file:/C:/wamp64/www/JavaEE/Projet/web/WEB-INF/pages/panier.jsp</file>
+        </group>
     </open-files>
 </project-private>

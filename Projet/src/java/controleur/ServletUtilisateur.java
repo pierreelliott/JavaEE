@@ -42,7 +42,7 @@ public class ServletUtilisateur extends HttpServlet {
             
             if(numRue == 0 || rue.equalsIgnoreCase("") || codePostal.equalsIgnoreCase("") || ville.equalsIgnoreCase(""))
             {
-                boolean adr = true;
+                boolean adr = false;
                 request.setAttribute("adresse", adr);
             }
             else

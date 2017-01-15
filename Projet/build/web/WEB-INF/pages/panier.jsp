@@ -2,21 +2,21 @@
 
 <!-- ======== Début Code HTML ======== -->
 <c:choose>
-    <c:when test="true">
-<!-- Panier vide -->
-    
-	<div class="row">
+    <c:when test="${requestScope.panierVide}">
+        <!-- Panier vide -->
+
+        <div class="row">
             <div class="col-lg-offset-3 col-lg-6 site-wrapper">
                 <p>Votre panier est vide</p>
             </div>
-	</div>
+        </div>
 
-<!-- ======== Fin Code HTML ======== -->
+        <!-- ======== Fin Code HTML ======== -->
     </c:when>
     <c:otherwise>
-<!-- ======== Début Code HTML ======== -->
-<!-- Nouvel affichage -->
-	<div class="row">
+        <!-- ======== Début Code HTML ======== -->
+        <!-- Nouvel affichage -->
+        <div class="row">
             <div class="col-lg-offset-3 col-lg-6 site-wrapper">
                 <div>
                     <legend>Votre panier</legend>
@@ -54,32 +54,52 @@
                     </div>
                 </div>
             </div>
-	</div>
+        </div>
     </c:otherwise>
 </c:choose>
 <!-- ======== Fin Code HTML ======== -->
 
 <!-- ======== Début Code Javascript ======== -->
 <script>
+<script>
     $(function()
     {
-        $('button').click(function(e) {
-            console.log('test');
+        $('button').click(function(e)
+        {
             var produit = $(this).data('produit');
             var action = $(this).data('action');
             var qte = $(this).data('qte');
-            $.post('index.php',
+            $.post('panier',
             {
-                page: 'panier',
                 action: action,
-                produit: produit,
+                numProduit: produit,
                 qte: qte
             },
             function(data, status)
             {
                 // Faire une popup pour indiquer que le produit à bien été ajouté
-                location.reload(true);
-                console.log('Data : ' + data + ', Status : ' + status);
+
+                var panierVide = $(data).find('.panier').data('estVide');
+                console.log('estVide : ' + panierVide);
+                if (panierVide === "1")
+                {
+                    $('.panier').text('Votre panier est vide');
+                }
+
+                var qte = $(data).find('#' + produit + ' .qte').text();
+                var prix = $(data).find('.prix').text();
+                console.log('qte : ' + qte);
+                console.log('prix : ' + prix);
+                if(qte === "")
+                {
+                    $('#' + produit).remove();
+                }
+                else
+                {
+                    $('#' + produit + ' .qte').text(qte);
+                }
+
+                $('.prix').text(prix);
             });
         });
     });
