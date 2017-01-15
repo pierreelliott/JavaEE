@@ -92,22 +92,22 @@
             var produit = $(this).data('produit');
             var action = $(this).data('action');
             var qte = $(this).data('qte');
-            $.post('panier',
-                    {
-                        action: action,
-                        numProduit: produit,
-                        qte: qte
-                    },
-                    function (data, status)
-                    {
-                        // Faire une popup pour indiquer que le produit à bien été ajouté
-                        var fenAlert = $('.alert');
-                        fenAlert.removeClass('hidden')
-                        setTimeout(function ()
-                        {
-                            fenAlert.addClass('hidden');
-                        }, 2500);
-                    });
+            $.post('WEB-INF/panier',
+            {
+                action: action,
+                numProduit: produit,
+                qte: qte
+            },
+            function (data, status)
+            {
+                // Faire une popup pour indiquer que le produit à bien été ajouté
+                var fenAlert = $('.alert');
+                fenAlert.removeClass('hidden')
+                setTimeout(function ()
+                {
+                    fenAlert.addClass('hidden');
+                }, 2500);
+            });
         });
 
         $('#produitModal').on('show.bs.modal', function (event) {

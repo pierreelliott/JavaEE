@@ -46,22 +46,23 @@ public final class _404_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write('\r');
       out.write('\n');
-      out.write("\n");
-      out.write("<!-- ======== Début Code HTML ======== -->\n");
-      out.write("\n");
-      out.write("<div class='row'>\n");
-      out.write("    <div class='col-lg-offset-3 col-lg-6 site-wrapper'>\n");
-      out.write("        <div class='jumbotron'><h1>Nous sommes désolés, la page à laquelle vous tentez d'accéder semble introuvable.</h1></div>\n");
-      out.write("    </div>\n");
-      out.write("</div>\n");
-      out.write("<div class=\"row\">\n");
-      out.write("    <div class=\"col-md-offset-4 col-md-4\">\n");
-      out.write("        <a href=\"accueil\"  class=\"btn btn-md btn-default\">Revenir à l'accueil</a>\n");
-      out.write("    </div>\n");
-      out.write("</div>\n");
-      out.write("\n");
-      out.write("<!-- ======== Fin Code HTML ======== -->\n");
+      out.write("\r\n");
+      out.write("<!-- ======== Début Code HTML ======== -->\r\n");
+      out.write("\r\n");
+      out.write("<div class='row'>\r\n");
+      out.write("    <div class='col-lg-offset-3 col-lg-6 site-wrapper'>\r\n");
+      out.write("        <div class='jumbotron'><h1>Nous sommes désolés, la page à laquelle vous tentez d'accéder semble introuvable.</h1></div>\r\n");
+      out.write("    </div>\r\n");
+      out.write("</div>\r\n");
+      out.write("<div class=\"row\">\r\n");
+      out.write("    <div class=\"col-md-offset-4 col-md-4\">\r\n");
+      out.write("        <a href=\"accueil\"  class=\"btn btn-md btn-default\">Revenir à l'accueil</a>\r\n");
+      out.write("    </div>\r\n");
+      out.write("</div>\r\n");
+      out.write("\r\n");
+      out.write("<!-- ======== Fin Code HTML ======== -->\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

@@ -59,22 +59,23 @@ public final class commande_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write('\r');
       out.write('\n');
-      out.write("\n");
-      out.write("\n");
-      out.write("<!-- ======== Début Code HTML ======== -->\n");
-      out.write("\n");
-      out.write("<div class=\"row\">\n");
-      out.write("    <div class=\"col-lg-offset-3 col-lg-6 site-wrapper\">\n");
-      out.write("        <div class=\"row\">\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<!-- ======== Début Code HTML ======== -->\r\n");
+      out.write("\r\n");
+      out.write("<div class=\"row\">\r\n");
+      out.write("    <div class=\"col-lg-offset-3 col-lg-6 site-wrapper\">\r\n");
+      out.write("        <div class=\"row\">\r\n");
       out.write("            ");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("        </div>\n");
-      out.write("    </div>\n");
-      out.write("</div>\n");
-      out.write("\n");
+      out.write("\r\n");
+      out.write("        </div>\r\n");
+      out.write("    </div>\r\n");
+      out.write("</div>\r\n");
+      out.write("\r\n");
       out.write("<!-- ======== Fin Code HTML ======== -->");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
@@ -104,25 +105,25 @@ public final class commande_jsp extends org.apache.jasper.runtime.HttpJspBase
       int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
       if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
-          out.write("                <div class=\"media\">\n");
-          out.write("                    <div class=\"media-left\">\n");
+          out.write("\r\n");
+          out.write("                <div class=\"media\">\r\n");
+          out.write("                    <div class=\"media-left\">\r\n");
           out.write("                        <h1>Commande du ");
           if (_jspx_meth_c_out_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
-          out.write("</h1>\n");
-          out.write("                    </div>\n");
-          out.write("                    <div class=\"media-body\">\n");
+          out.write("</h1>\r\n");
+          out.write("                    </div>\r\n");
+          out.write("                    <div class=\"media-body\">\r\n");
           out.write("                        <p class=\"lead\">Nombre de produits : ");
           if (_jspx_meth_c_out_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
-          out.write(" €</p>\n");
+          out.write(" €</p>\r\n");
           out.write("                        <p class=\"lead\">Prix de la commande : ");
           if (_jspx_meth_c_out_2((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
-          out.write(" €</p>\n");
-          out.write("                    </div>\n");
-          out.write("                </div>\n");
+          out.write(" €</p>\r\n");
+          out.write("                    </div>\r\n");
+          out.write("                </div>\r\n");
           out.write("            ");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
