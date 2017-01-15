@@ -46,6 +46,7 @@ public final class layout_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write('\r');
       out.write('\n');
       out.write("\r\n");
       out.write("\r\n");
@@ -72,7 +73,7 @@ public final class layout_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\t<body>\r\n");
       out.write("                ");
-      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "pages/header.jsp", out, false);
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "jspf/header.jspf", out, false);
       out.write("\r\n");
       out.write("                ");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "jspf/bootstrapJavascript.jspf", out, false);

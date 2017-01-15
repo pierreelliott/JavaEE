@@ -32,7 +32,7 @@
                     <c:forEach items="${requestScope.carte.produits}" var="produit">
                         <tr class="text-muted">
                             <td>
-                                <a href="#produitModal" data-toggle="modal"
+                                <a href="#produitModal" class="text-muted" data-toggle="modal"
                                    data-numProduit="${produit.numProduit}"
                                    data-libelle="${produit.libelle}"
                                    data-sourceImg="${produit.image}"

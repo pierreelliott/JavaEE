@@ -100,6 +100,10 @@ public final class utilisateur_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <dd>");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sessionScope.utilisateur.dateInscription}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</dd>\r\n");
+      out.write("            <dt><span class=\"glyphicon glyphicon-map-marker\"></span> Date de votre dernière connexion :</dt>\r\n");
+      out.write("            <dd>");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cookie.dateDerniereConnexion.value}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</dd>\r\n");
       out.write("        </dl>\r\n");
       out.write("    </div>\r\n");
       out.write("</div>\r\n");

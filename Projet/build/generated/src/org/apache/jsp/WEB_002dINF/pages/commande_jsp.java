@@ -122,6 +122,10 @@ public final class commande_jsp extends org.apache.jasper.runtime.HttpJspBase
           if (_jspx_meth_c_out_2((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
           out.write(" €</p>\r\n");
+          out.write("                        ");
+          if (_jspx_meth_c_forEach_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
+            return true;
+          out.write("\r\n");
           out.write("                    </div>\r\n");
           out.write("                </div>\r\n");
           out.write("            ");
@@ -195,6 +199,64 @@ public final class commande_jsp extends org.apache.jasper.runtime.HttpJspBase
       return true;
     }
     _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_2);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_forEach_1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_1.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
+    _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${commande.prods}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_1.setVar("produit");
+    int[] _jspx_push_body_count_c_forEach_1 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_1 = _jspx_th_c_forEach_1.doStartTag();
+      if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("                            <div class=\"row\">\r\n");
+          out.write("                                <div class=\"panel panel-default\">\r\n");
+          out.write("                                    <div class=\"media\">\r\n");
+          out.write("                                        <div class=\"media-left\">\r\n");
+          out.write("                                            ");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${produit.image}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\r\n");
+          out.write("                                        </div>\r\n");
+          out.write("                                        <div class=\"media-body\">\r\n");
+          out.write("                                            <h1 class=\"media-heading text-muted\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${produit.libelle}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</h1>\r\n");
+          out.write("                                            <p class=\"muted pull-left\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${produit.description}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</p>\r\n");
+          out.write("                                            <p class=\"muted pull-left\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${produit.prix}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</p>\r\n");
+          out.write("                                        </div>\r\n");
+          out.write("                                    </div>\r\n");
+          out.write("                                </div>\r\n");
+          out.write("                            </div>\r\n");
+          out.write("                        ");
+          int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_1[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_1.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_1.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_1);
+    }
     return false;
   }
 }

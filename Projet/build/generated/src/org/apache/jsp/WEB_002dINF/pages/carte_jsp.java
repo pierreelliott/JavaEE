@@ -56,6 +56,7 @@ public final class carte_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write('\r');
       out.write('\n');
       out.write("\r\n");
       out.write("\r\n");
@@ -198,7 +199,7 @@ public final class carte_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("\r\n");
           out.write("                        <tr class=\"text-muted\">\r\n");
           out.write("                            <td>\r\n");
-          out.write("                                <a href=\"#produitModal\" data-toggle=\"modal\"\r\n");
+          out.write("                                <a href=\"#produitModal\" class=\"text-muted\" data-toggle=\"modal\"\r\n");
           out.write("                                   data-numProduit=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${produit.numProduit}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("\"\r\n");
