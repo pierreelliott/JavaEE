@@ -40,8 +40,6 @@ public class ServletPanier extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(true);
-        response.setContentType("text/html");
-        response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         
         String action = request.getParameter("action");

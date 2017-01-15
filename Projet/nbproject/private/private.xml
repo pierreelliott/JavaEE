@@ -3,19 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/controleur/ServletConnexion.java</file>
-            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/modele/beans/Utilisateur.java</file>
-            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/controleur/ServletCommande.java</file>
-            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/modele/Manager.java</file>
-            <file>file:/C:/wamp64/www/JavaEE/Projet/web/WEB-INF/pages/utilisateur.jsp</file>
-            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/modele/beans/Panier.java</file>
-            <file>file:/C:/wamp64/www/JavaEE/Projet/web/WEB-INF/pages/header.jsp</file>
-            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/modele/beans/Commande.java</file>
-            <file>file:/C:/wamp64/www/JavaEE/Projet/web/WEB-INF/pages/commande.jsp</file>
-            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/controleur/ServletPanier.java</file>
-            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/controleur/ServletUtilisateur.java</file>
-            <file>file:/C:/wamp64/www/JavaEE/Projet/web/WEB-INF/pages/carte.jsp</file>
-            <file>file:/C:/wamp64/www/JavaEE/Projet/web/WEB-INF/pages/panier.jsp</file>
+            <file>file:/D:/Mes%20Documents/Scolarité/IUT%20Info/S3/JavaEE/Projet/JavaEE/Projet/src/java/controleur/ServletPanier.java</file>
+            <file>file:/D:/Mes%20Documents/Scolarité/IUT%20Info/S3/JavaEE/Projet/JavaEE/Projet/src/java/modele/beans/Carte.java</file>
+            <file>file:/D:/Mes%20Documents/Scolarité/IUT%20Info/S3/JavaEE/Projet/JavaEE/Projet/src/java/controleur/ServletCommande.java</file>
+            <file>file:/D:/Mes%20Documents/Scolarité/IUT%20Info/S3/JavaEE/Projet/JavaEE/Projet/src/java/modele/beans/Commande.java</file>
+            <file>file:/D:/Mes%20Documents/Scolarité/IUT%20Info/S3/JavaEE/Projet/JavaEE/Projet/web/WEB-INF/pages/panier.jsp</file>
+            <file>file:/D:/Mes%20Documents/Scolarité/IUT%20Info/S3/JavaEE/Projet/JavaEE/Projet/src/java/modele/Manager.java</file>
+            <file>file:/D:/Mes%20Documents/Scolarité/IUT%20Info/S3/JavaEE/Projet/JavaEE/Projet/web/WEB-INF/pages/carte.jsp</file>
+            <file>file:/D:/Mes%20Documents/Scolarité/IUT%20Info/S3/JavaEE/Projet/JavaEE/Projet/src/java/modele/beans/Panier.java</file>
+            <file>file:/D:/Mes%20Documents/Scolarité/IUT%20Info/S3/JavaEE/Projet/JavaEE/Projet/src/java/modele/beans/Produit.java</file>
+            <file>file:/D:/Mes%20Documents/Scolarité/IUT%20Info/S3/JavaEE/Projet/JavaEE/Projet/src/java/controleur/ServletCarte.java</file>
         </group>
     </open-files>
 </project-private>
