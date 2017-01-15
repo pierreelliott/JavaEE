@@ -70,6 +70,7 @@ public class ServletCommande extends HttpServlet {
                 }
                 else
                     break;
+                break;
             case "afficher":
             default:
                 if(user != null)

@@ -23,6 +23,7 @@
 
 	<body>
                 <jsp:include page="pages/header.jsp" />
+                <jsp:include page="jspf/bootstrapJavascript.jspf" />
 
 		<div class="container-fluid">
                     <jsp:include page="${requestScope.afficherPage}" />
@@ -30,7 +31,6 @@
 
 
                 <jsp:include page="jspf/footer.jspf" />
-                <jsp:include page="jspf/bootstrapJavascript.jspf" />
                 <jsp:include page="jspf/appelPages.jspf" />
 	</body>
 </html>

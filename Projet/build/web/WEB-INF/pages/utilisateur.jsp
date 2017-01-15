@@ -27,6 +27,8 @@
             </dd>
             <dt><span class="glyphicon glyphicon-map-marker"></span> Date d'inscription :</dt>
             <dd>${sessionScope.utilisateur.dateInscription}</dd>
+            <dt><span class="glyphicon glyphicon-map-marker"></span> Date de votre dernière connexion :</dt>
+            <dd>${cookie.dateDerniereConnexion.value}</dd>
         </dl>
     </div>
 </div>

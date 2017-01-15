@@ -6,6 +6,8 @@
 package modele.beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,6 +17,15 @@ import java.util.Map;
 public class Panier implements Serializable {
 
     private Map<Produit,Integer> produits;
+    private List<Produit> prods;
+
+    public List<Produit> getProds() {
+        return prods;
+    }
+
+    public void setProds(List<Produit> prods) {
+        this.prods = prods;
+    }
 
     public Map<Produit,Integer> getProduits() {
         return produits;
@@ -22,10 +33,16 @@ public class Panier implements Serializable {
 
     public void setProduits(Map<Produit,Integer> produits) {
         this.produits = produits;
+        
+        this.prods = new ArrayList<>();
+        for(Produit p : produits.keySet()) {
+            prods.add(p);
+        }
     }
 
     public void addProduit(Produit p, int qte) {
         produits.put(p,qte);
+        prods.add(p);
     }
     
     public void modifProduit(Produit p, int qte) {

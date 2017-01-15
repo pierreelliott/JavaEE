@@ -7,6 +7,7 @@ package modele.beans;
 
 import java.util.Date;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -48,6 +49,7 @@ public class Commande implements Serializable {
     public void setProduits(Map<Produit,Integer> produits) {
         this.produits = produits;
         
+        this.prods = new ArrayList<>();
         for(Produit p : produits.keySet())
         {
             prods.add(p);

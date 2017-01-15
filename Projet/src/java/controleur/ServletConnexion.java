@@ -7,9 +7,13 @@ package controleur;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,6 +46,12 @@ public class ServletConnexion extends HttpServlet {
         {
             session.removeAttribute("utilisateur");
             session.invalidate();
+            String derniereConnexion = getCookieValue(request, "dateDerniereConnexion");
+            if (derniereConnexion != null) {
+                Cookie coo = new Cookie("dateDerniereConnexion","");
+                coo.setMaxAge(0);
+                response.addCookie(coo);
+            }
             this.getServletContext().getRequestDispatcher("/accueil").forward( request, response );
         }
         else
@@ -78,7 +88,14 @@ public class ServletConnexion extends HttpServlet {
                 //Logger.getLogger(ServletConnexion.class.getName()).log(Level.SEVERE, null, "");
                 if(user != null) //si logs valides
                 {
-                    session.setAttribute("utilisateur",user);
+                    String derniereConnexion = getCookieValue(request, "dateDerniereConnexion");
+                    if (derniereConnexion != null) {
+                        /* Récupération de la date courante */
+                        derniereConnexion = DateFormat.getDateInstance( DateFormat.MEDIUM ).format( new Date() ) ;
+                        Cookie cook = new Cookie("dateDerniereConnexion",derniereConnexion);
+                        response.addCookie(cook);
+                        session.setAttribute("utilisateur",user);
+                    }
                     this.getServletContext().getRequestDispatcher("/accueil").forward( request, response );
                 }
                 else
@@ -157,6 +174,18 @@ public class ServletConnexion extends HttpServlet {
         } else {
             return valeur;
         }
+    }
+    
+    private static String getCookieValue(HttpServletRequest request, String nom) {
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie != null && nom.equals(cookie.getName())) {
+                    return cookie.getValue();
+                }
+            }
+        }
+        return null;
     }
     
 }

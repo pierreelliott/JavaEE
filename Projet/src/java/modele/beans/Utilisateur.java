@@ -124,6 +124,8 @@ public class Utilisateur implements Serializable {
     }
     
     public void addCommande(Commande commande) {
+        if(this.commandes == null)
+            this.commandes = new ArrayList<>();
         this.commandes.add(commande);
     }
 

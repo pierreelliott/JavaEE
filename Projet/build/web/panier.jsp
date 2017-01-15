@@ -1,6 +1,5 @@
-
-
-<!-- ======== Début Code HTML ======== -->
+<%@page pageEncoding="UTF-8"%>
+<!-- ======== DÃ©but Code HTML ======== -->
 <c:choose>
     <c:when test="${requestScope.panierVide}">
         <!-- Panier vide -->
@@ -14,18 +13,18 @@
         <!-- ======== Fin Code HTML ======== -->
     </c:when>
     <c:otherwise>
-        <!-- ======== Début Code HTML ======== -->
+        <!-- ======== DÃ©but Code HTML ======== -->
         <!-- Nouvel affichage -->
         <div class="row">
             <div class="col-lg-offset-3 col-lg-6 site-wrapper">
                 <div>
                     <legend>Votre panier</legend>
                     <div class="row">
-                        <c:forEach items="${ requestScope.panier }" var="produit">
+                        <c:forEach items="${ requestScope.panier.prods }" var="produit">
                             <div class="col-xs-12 produit">
                                 <div class="row">
                                     <div class="col-xs-2">
-                                        <img src="${ produit.source }" alt="Image ${ produit.libelle }" class="img-responsive">
+                                        <img src="${ produit.image }" alt="Image ${ produit.libelle }" class="img-responsive">
                                     </div>
                                     <div class="col-xs-3">
                                         <p>${ produit.libelle }</p>
@@ -34,13 +33,13 @@
                                         <button type="button" data-action="modification" data-produit="${ produit.numProduit }" data-qte="1" class="btn btn-xs btn-primary btn-qte-produit">+</button>
                                     </div>
                                     <div class="col-xs-1">
-                                        <p>${ produit.quantite }</p>
+                                        <p><c:out value="${ requestScope.panier.produits.produit }" default="0"/></p>
                                     </div>
                                     <div class="col-xs-1">
                                         <button type="button" data-action="modification" data-produit="${ produit.numProduit }" data-qte="-1" class="btn btn-xs btn-primary btn-qte-produit">-</button>
                                     </div>
                                     <div class="col-xs-3">
-                                        <p>${ produit.prix } ?</p>
+                                        <p>${ produit.prix } â‚¬</p>
                                     </div>
                                     <div class="col-xs-1">
                                         <button type="button" data-action="suppression" data-produit="${ produit.numProduit }" class="btn btn-xs btn-danger btn-qte-produit">&times;</button>
@@ -50,8 +49,24 @@
                         </c:forEach>
                     </div>
                     <div class="row">
-                        <p>Prix du panier : 0 ?</p>
+                        <p>Prix du panier : 0 â‚¬</p>
                     </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <c:choose>
+                        <c:when test="${ !empty sessionScope.utilisateur }">
+                            <div class="col-md-offset-8 col-md-4">
+                                <a href="commande?action=ajouter"  class="btn btn-md btn-success">Commander</a>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="col-md-offset-6 col-md-6">
+                                <a href="connexion"  class="btn btn-md btn-danger">Connectez-vous pour pouvoir commander</a>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+                    
                 </div>
             </div>
         </div>
@@ -59,7 +74,7 @@
 </c:choose>
 <!-- ======== Fin Code HTML ======== -->
 
-<!-- ======== Début Code Javascript ======== -->
+<!-- ======== DÃ©but Code Javascript ======== -->
 <script>
 <script>
     $(function()
@@ -77,7 +92,7 @@
             },
             function(data, status)
             {
-                // Faire une popup pour indiquer que le produit à bien été ajouté
+                // Faire une popup pour indiquer que le produit Ã  bien Ã©tÃ© ajoutÃ©
 
                 var panierVide = $(data).find('.panier').data('estVide');
                 console.log('estVide : ' + panierVide);

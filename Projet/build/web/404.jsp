@@ -3,7 +3,7 @@
 
 <div class='row'>
     <div class='col-lg-offset-3 col-lg-6 site-wrapper'>
-        <div class='jumbotron'><h1>Nous sommes désolés, la page à laquelle vous tentez d'accéder semble introuvable.</h1></div>
+        <div class='jumbotron'><h1 class="text-danger">Nous sommes désolés, la page à laquelle vous tentez d'accéder semble introuvable.</h1></div>
     </div>
 </div>
 <div class="row">

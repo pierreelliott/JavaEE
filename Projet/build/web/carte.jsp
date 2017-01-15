@@ -30,7 +30,7 @@
                         </tr>
                     </thead>
                     <c:forEach items="${requestScope.carte.produits}" var="produit">
-                        <tr>
+                        <tr class="text-muted">
                             <td>
                                 <a href="#produitModal" data-toggle="modal"
                                    data-numProduit="${produit.numProduit}"
@@ -44,9 +44,9 @@
                             <td>${produit.description}</td>
                             <td><img src="${produit.image}" alt='Image du produit'></td>
                             <td>
-                                <button type="button" data-action="ajout" data-produit="${produit.numProduit}" class="btn btn-primary">
+                                <a  href="panier?action=ajout&numProduit=${produit.numProduit}&qte=1" type="button" data-action="ajout" data-produit="${produit.numProduit}" class="btn btn-primary">
                                         <img title='Ajouter au panier' alt='Ajouter au panier' src='images/achat2.png'>
-                                </button>
+                                </a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -56,20 +56,20 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                                <h4 class="modal-title"></h4>
+                                <h4 class="modal-title text-muted"></h4>
                             </div>
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col-xs-4">
-                                        <img src="images/sushi.png" alt="Image du produit" id="imgModal" class="img-responsive">
+                                        <img src="images/sushi.png" alt="Image du produit" id="imgModal" class="img-responsive text-muted">
                                     </div>
                                     <div class="col-xs-8">
-                                        <p id="descriptionProduit"></p>
+                                        <p class="text-muted" id="descriptionProduit"></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <p id="prixProduit" class="text-center"></p>
+                                <p id="prixProduit" class="text-center text-muted"></p>
                             </div>
                         </div>
                     </div>
@@ -91,23 +91,26 @@
         $('button').click(function (e) {
             var produit = $(this).data('produit');
             var action = $(this).data('action');
-            var qte = $(this).data('qte');
-            $.post('panier',
-                    {
-                        action: action,
-                        numProduit: produit,
-                        qte: qte
-                    },
-                    function (data, status)
-                    {
-                        // Faire une popup pour indiquer que le produit à bien été ajouté
-                        var fenAlert = $('.alert');
-                        fenAlert.removeClass('hidden')
-                        setTimeout(function ()
-                        {
-                            fenAlert.addClass('hidden');
-                        }, 2500);
-                    });
+            //var qte = $(this).data('qte');
+            console.log(produit);
+            console.log(action);
+            //console.log(qte);
+            $.post('WEB-INF/panier',
+            {
+                action: action,
+                numProduit: produit
+                //qte: qte
+            },
+            function (data, status)
+            {
+                // Faire une popup pour indiquer que le produit à bien été ajouté
+                var fenAlert = $('.alert');
+                fenAlert.removeClass('hidden');
+                setTimeout(function ()
+                {
+                    fenAlert.addClass('hidden');
+                }, 2500);
+            });
         });
 
         $('#produitModal').on('show.bs.modal', function (event) {

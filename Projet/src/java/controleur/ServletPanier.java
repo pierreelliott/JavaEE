@@ -7,6 +7,7 @@ package controleur;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -42,7 +43,10 @@ public class ServletPanier extends HttpServlet {
         if(action == null) action ="";
         
         Panier panier = (Panier)session.getAttribute("panier");
-        if(panier == null) panier = new Panier();
+        if(panier == null){
+            panier = new Panier();
+            panier.setProduits(new HashMap<>());
+        }
         else panier = (Panier)session.getAttribute("panier");
         
         int numP;
@@ -56,14 +60,20 @@ public class ServletPanier extends HttpServlet {
                 if(qte < 1) qte = 1;
                 Manager man = new Manager();
                 Carte carte;
-                
+                System.out.println("Allo1");
                 try {
                     carte = man.recupererCarte();
                     Produit p = carte.getProduit(numP);
-                    panier.addProduit(p,qte);
+                    System.out.println("Allo2");
+                    //System.out.println("Produit : "+p+", libelle :"+p.getLibelle());
+                    panier.addProduit(p,1);
                 } catch (SQLException ex) {
                     Logger.getLogger(ServletPanier.class.getName()).log(Level.SEVERE, null, ex);
-                }                
+                }
+                System.out.println("Allo3");
+                session.setAttribute("panier", panier);
+                System.out.println("Allo4");
+                this.getServletContext().getRequestDispatcher( "/carte" ).forward( request, response );
                 break;
                 
             case "modification":
@@ -80,7 +90,11 @@ public class ServletPanier extends HttpServlet {
                 break;
             case "afficher":
             default:
-                if(panier.getProduits() == null || panier.getProduits().isEmpty()) request.setAttribute("panierVide", true);
+                if(panier.getProduits() == null || panier.getProduits().isEmpty()) {
+                    request.setAttribute("panierVide", true);
+                }
+                else
+                    request.setAttribute("panier", panier);
                 request.setAttribute("titrePage", "Panier");
                 request.setAttribute("afficherPage", "pages/panier.jsp");
                 this.getServletContext().getRequestDispatcher( "/WEB-INF/layout.jsp" ).forward( request, response );

@@ -4,12 +4,17 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/controleur/ServletConnexion.java</file>
-            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/modele/beans/Carte.java</file>
-            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/controleur/ServletInscription.java</file>
             <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/modele/beans/Utilisateur.java</file>
-            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/controleur/ServletUtilisateur.java</file>
-            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/controleur/ServletPanier.java</file>
+            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/controleur/ServletCommande.java</file>
             <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/modele/Manager.java</file>
+            <file>file:/C:/wamp64/www/JavaEE/Projet/web/WEB-INF/pages/utilisateur.jsp</file>
+            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/modele/beans/Panier.java</file>
+            <file>file:/C:/wamp64/www/JavaEE/Projet/web/WEB-INF/pages/header.jsp</file>
+            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/modele/beans/Commande.java</file>
+            <file>file:/C:/wamp64/www/JavaEE/Projet/web/WEB-INF/pages/commande.jsp</file>
+            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/controleur/ServletPanier.java</file>
+            <file>file:/C:/wamp64/www/JavaEE/Projet/src/java/controleur/ServletUtilisateur.java</file>
+            <file>file:/C:/wamp64/www/JavaEE/Projet/web/WEB-INF/pages/carte.jsp</file>
             <file>file:/C:/wamp64/www/JavaEE/Projet/web/WEB-INF/pages/panier.jsp</file>
         </group>
     </open-files>
