@@ -65,44 +65,45 @@ public final class utilisateur_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write('\r');
       out.write('\n');
-      out.write("\n");
-      out.write("<!-- ======== Début Code HTML ======== -->\n");
-      out.write("\n");
-      out.write("<div class=\"row\">\n");
-      out.write("    <div class=\"col-lg-offset-3 col-lg-6 site-wrapper\">\n");
+      out.write("\r\n");
+      out.write("<!-- ======== Début Code HTML ======== -->\r\n");
+      out.write("\r\n");
+      out.write("<div class=\"row\">\r\n");
+      out.write("    <div class=\"col-lg-offset-3 col-lg-6 site-wrapper\">\r\n");
       out.write("        <h1>Vos informations - ");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sessionScope.utilisateur.nom}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write(' ');
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sessionScope.utilisateur.prenom}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</h1>\n");
-      out.write("        <dl>\n");
-      out.write("            <dt><span class=\"glyphicon glyphicon-user\"></span> Pseudo :</dt>\n");
+      out.write("</h1>\r\n");
+      out.write("        <dl>\r\n");
+      out.write("            <dt><span class=\"glyphicon glyphicon-user\"></span> Pseudo :</dt>\r\n");
       out.write("            <dd>");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sessionScope.utilisateur.pseudo}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</dd>\n");
-      out.write("            <dt>@ Adresse mail :</dt>\n");
+      out.write("</dd>\r\n");
+      out.write("            <dt>@ Adresse mail :</dt>\r\n");
       out.write("            <dd>");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sessionScope.utilisateur.mail}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</dd>\n");
-      out.write("            <dt><span class=\"glyphicon glyphicon glyphicon-phone\"></span> Téléphone :</dt>\n");
+      out.write("</dd>\r\n");
+      out.write("            <dt><span class=\"glyphicon glyphicon glyphicon-phone\"></span> Téléphone :</dt>\r\n");
       out.write("            <dd>");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sessionScope.utilisateur.telephone}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</dd>\n");
-      out.write("            <dt><span class=\"glyphicon glyphicon-map-marker\"></span> Adresse :</dt>\n");
+      out.write("</dd>\r\n");
+      out.write("            <dt><span class=\"glyphicon glyphicon-map-marker\"></span> Adresse :</dt>\r\n");
       out.write("            <dd>");
       if (_jspx_meth_c_choose_0(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("            </dd>\n");
-      out.write("            <dt><span class=\"glyphicon glyphicon-map-marker\"></span> Date d'inscription :</dt>\n");
+      out.write("\r\n");
+      out.write("            </dd>\r\n");
+      out.write("            <dt><span class=\"glyphicon glyphicon-map-marker\"></span> Date d'inscription :</dt>\r\n");
       out.write("            <dd>");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sessionScope.utilisateur.dateInscription}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</dd>\n");
-      out.write("        </dl>\n");
-      out.write("    </div>\n");
-      out.write("</div>\n");
-      out.write("\n");
+      out.write("</dd>\r\n");
+      out.write("        </dl>\r\n");
+      out.write("    </div>\r\n");
+      out.write("</div>\r\n");
+      out.write("\r\n");
       out.write("<!-- ======== Fin Code HTML ======== -->");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
@@ -128,15 +129,15 @@ public final class utilisateur_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_choose_0 = _jspx_th_c_choose_0.doStartTag();
     if (_jspx_eval_c_choose_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("                    ");
         if (_jspx_meth_c_when_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_choose_0, _jspx_page_context))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("                    ");
         if (_jspx_meth_c_otherwise_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_choose_0, _jspx_page_context))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("                ");
         int evalDoAfterBody = _jspx_th_c_choose_0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -163,11 +164,11 @@ public final class utilisateur_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_when_0 = _jspx_th_c_when_0.doStartTag();
     if (_jspx_eval_c_when_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("                        ");
         if (_jspx_meth_c_out_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_when_0, _jspx_page_context))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("                    ");
         int evalDoAfterBody = _jspx_th_c_when_0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -211,8 +212,8 @@ public final class utilisateur_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_otherwise_0 = _jspx_th_c_otherwise_0.doStartTag();
     if (_jspx_eval_c_otherwise_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
-        out.write("                        Vous n'avez pas renseigné d'adresse\n");
+        out.write("\r\n");
+        out.write("                        Vous n'avez pas renseigné d'adresse\r\n");
         out.write("                    ");
         int evalDoAfterBody = _jspx_th_c_otherwise_0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)

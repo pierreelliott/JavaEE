@@ -65,24 +65,25 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write('\r');
       out.write('\n');
-      out.write("<!-- NAVBAR -->\n");
-      out.write("<nav class=\"navbar navbar-static-top navbar-inverse\">\n");
-      out.write("    <ul class=\"nav navbar-nav\">\n");
-      out.write("        <li><a href=\"accueil\" id=\"active\">Accueil</a></li>\n");
-      out.write("        <li><a href=\"carte\">Carte</a></li>\n");
-      out.write("    </ul>\n");
-      out.write("\n");
-      out.write("    <ul class=\"nav navbar-nav navbar-right\">\n");
+      out.write("<!-- NAVBAR -->\r\n");
+      out.write("<nav class=\"navbar navbar-static-top navbar-inverse\">\r\n");
+      out.write("    <ul class=\"nav navbar-nav\">\r\n");
+      out.write("        <li><a href=\"accueil\" id=\"active\">Accueil</a></li>\r\n");
+      out.write("        <li><a href=\"carte\">Carte</a></li>\r\n");
+      out.write("    </ul>\r\n");
+      out.write("\r\n");
+      out.write("    <ul class=\"nav navbar-nav navbar-right\">\r\n");
       out.write("        ");
       if (_jspx_meth_c_choose_0(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("        \n");
-      out.write("\n");
-      out.write("        <li><a href=\"panier\"><span class=\"glyphicon glyphicon-shopping-cart\"></a></li>\n");
-      out.write("    </ul>\n");
-      out.write("</nav>\n");
+      out.write("\r\n");
+      out.write("        \r\n");
+      out.write("\r\n");
+      out.write("        <li><a href=\"panier\"><span class=\"glyphicon glyphicon-shopping-cart\"></a></li>\r\n");
+      out.write("    </ul>\r\n");
+      out.write("</nav>\r\n");
       out.write("<!-- NAVBAR END -->");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
@@ -108,15 +109,15 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_choose_0 = _jspx_th_c_choose_0.doStartTag();
     if (_jspx_eval_c_choose_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("            ");
         if (_jspx_meth_c_when_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_choose_0, _jspx_page_context))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("            ");
         if (_jspx_meth_c_otherwise_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_choose_0, _jspx_page_context))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("        ");
         int evalDoAfterBody = _jspx_th_c_choose_0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -143,20 +144,20 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_when_0 = _jspx_th_c_when_0.doStartTag();
     if (_jspx_eval_c_when_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
-        out.write("                <!-- Si l'utilisateur est connecté -->\n");
-        out.write("                <li class=\"dropdown\">\n");
+        out.write("\r\n");
+        out.write("                <!-- Si l'utilisateur est connecté -->\r\n");
+        out.write("                <li class=\"dropdown\">\r\n");
         out.write("                    <a data-toggle=\"dropdown\" href=\"#\">");
         if (_jspx_meth_c_out_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_when_0, _jspx_page_context))
           return true;
-        out.write("<b class=\"caret\"></b></a>\n");
-        out.write("                    <ul class=\"dropdown-menu\">\n");
-        out.write("                        <li><a href=\"utilisateur\">Mon compte</a></li>\n");
-        out.write("                        <li><a href=\"panier\">Consulter panier</a></li>\n");
-        out.write("                        <li class=\"divider\"></li>\n");
-        out.write("                        <li><a href=\"connexion\">Déconnexion</a></li>\n");
-        out.write("                    </ul>\n");
-        out.write("                </li>\n");
+        out.write("<b class=\"caret\"></b></a>\r\n");
+        out.write("                    <ul class=\"dropdown-menu\">\r\n");
+        out.write("                        <li><a href=\"utilisateur\">Mon compte</a></li>\r\n");
+        out.write("                        <li><a href=\"panier\">Consulter panier</a></li>\r\n");
+        out.write("                        <li class=\"divider\"></li>\r\n");
+        out.write("                        <li><a href=\"connexion\">Déconnexion</a></li>\r\n");
+        out.write("                    </ul>\r\n");
+        out.write("                </li>\r\n");
         out.write("            ");
         int evalDoAfterBody = _jspx_th_c_when_0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -200,9 +201,9 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_otherwise_0 = _jspx_th_c_otherwise_0.doStartTag();
     if (_jspx_eval_c_otherwise_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
-        out.write("                <!-- Si l'utilisateur n'est pas connecté -->\n");
-        out.write("                <li><a href=\"connexion\">Connexion</a></li>\n");
+        out.write("\r\n");
+        out.write("                <!-- Si l'utilisateur n'est pas connecté -->\r\n");
+        out.write("                <li><a href=\"connexion\">Connexion</a></li>\r\n");
         out.write("            ");
         int evalDoAfterBody = _jspx_th_c_otherwise_0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
