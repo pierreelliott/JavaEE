@@ -76,25 +76,45 @@ public final class panier_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("<!-- ======== Début Code Javascript ======== -->\r\n");
       out.write("<script>\r\n");
+      out.write("<script>\r\n");
       out.write("    $(function()\r\n");
       out.write("    {\r\n");
-      out.write("        $('button').click(function(e) {\r\n");
-      out.write("            console.log('test');\r\n");
+      out.write("        $('button').click(function(e)\r\n");
+      out.write("        {\r\n");
       out.write("            var produit = $(this).data('produit');\r\n");
       out.write("            var action = $(this).data('action');\r\n");
       out.write("            var qte = $(this).data('qte');\r\n");
-      out.write("            $.post('index.php',\r\n");
+      out.write("            $.post('panier',\r\n");
       out.write("            {\r\n");
-      out.write("                page: 'panier',\r\n");
       out.write("                action: action,\r\n");
-      out.write("                produit: produit,\r\n");
+      out.write("                numProduit: produit,\r\n");
       out.write("                qte: qte\r\n");
       out.write("            },\r\n");
       out.write("            function(data, status)\r\n");
       out.write("            {\r\n");
       out.write("                // Faire une popup pour indiquer que le produit à bien été ajouté\r\n");
-      out.write("                location.reload(true);\r\n");
-      out.write("                console.log('Data : ' + data + ', Status : ' + status);\r\n");
+      out.write("\r\n");
+      out.write("                var panierVide = $(data).find('.panier').data('estVide');\r\n");
+      out.write("                console.log('estVide : ' + panierVide);\r\n");
+      out.write("                if (panierVide === \"1\")\r\n");
+      out.write("                {\r\n");
+      out.write("                    $('.panier').text('Votre panier est vide');\r\n");
+      out.write("                }\r\n");
+      out.write("\r\n");
+      out.write("                var qte = $(data).find('#' + produit + ' .qte').text();\r\n");
+      out.write("                var prix = $(data).find('.prix').text();\r\n");
+      out.write("                console.log('qte : ' + qte);\r\n");
+      out.write("                console.log('prix : ' + prix);\r\n");
+      out.write("                if(qte === \"\")\r\n");
+      out.write("                {\r\n");
+      out.write("                    $('#' + produit).remove();\r\n");
+      out.write("                }\r\n");
+      out.write("                else\r\n");
+      out.write("                {\r\n");
+      out.write("                    $('#' + produit + ' .qte').text(qte);\r\n");
+      out.write("                }\r\n");
+      out.write("\r\n");
+      out.write("                $('.prix').text(prix);\r\n");
       out.write("            });\r\n");
       out.write("        });\r\n");
       out.write("    });\r\n");
@@ -155,20 +175,20 @@ public final class panier_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_when_0 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _jspx_tagPool_c_when_test.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_when_0.setPageContext(_jspx_page_context);
     _jspx_th_c_when_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_choose_0);
-    _jspx_th_c_when_0.setTest(true);
+    _jspx_th_c_when_0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${requestScope.panierVide}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
     int _jspx_eval_c_when_0 = _jspx_th_c_when_0.doStartTag();
     if (_jspx_eval_c_when_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("<!-- Panier vide -->\r\n");
-        out.write("    \r\n");
-        out.write("\t<div class=\"row\">\r\n");
+        out.write("        <!-- Panier vide -->\r\n");
+        out.write("\r\n");
+        out.write("        <div class=\"row\">\r\n");
         out.write("            <div class=\"col-lg-offset-3 col-lg-6 site-wrapper\">\r\n");
         out.write("                <p>Votre panier est vide</p>\r\n");
         out.write("            </div>\r\n");
-        out.write("\t</div>\r\n");
+        out.write("        </div>\r\n");
         out.write("\r\n");
-        out.write("<!-- ======== Fin Code HTML ======== -->\r\n");
+        out.write("        <!-- ======== Fin Code HTML ======== -->\r\n");
         out.write("    ");
         int evalDoAfterBody = _jspx_th_c_when_0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -195,9 +215,9 @@ public final class panier_jsp extends org.apache.jasper.runtime.HttpJspBase
     if (_jspx_eval_c_otherwise_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("<!-- ======== Début Code HTML ======== -->\r\n");
-        out.write("<!-- Nouvel affichage -->\r\n");
-        out.write("\t<div class=\"row\">\r\n");
+        out.write("        <!-- ======== Début Code HTML ======== -->\r\n");
+        out.write("        <!-- Nouvel affichage -->\r\n");
+        out.write("        <div class=\"row\">\r\n");
         out.write("            <div class=\"col-lg-offset-3 col-lg-6 site-wrapper\">\r\n");
         out.write("                <div>\r\n");
         out.write("                    <legend>Votre panier</legend>\r\n");
@@ -212,7 +232,7 @@ public final class panier_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("                    </div>\r\n");
         out.write("                </div>\r\n");
         out.write("            </div>\r\n");
-        out.write("\t</div>\r\n");
+        out.write("        </div>\r\n");
         out.write("    ");
         int evalDoAfterBody = _jspx_th_c_otherwise_0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)

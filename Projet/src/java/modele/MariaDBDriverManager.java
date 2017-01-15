@@ -23,19 +23,18 @@ public class MariaDBDriverManager {
  // connexion a la BD MARIADB via DriverManager  
     @SuppressWarnings("UseSpecificCatch")
     public static Connection creerConnexion() {
-       FileInputStream fichier = null;
         try {
-            Connection conn = null;
+            Connection conn;
 
-            String userID = "p1402690";
-            String pwd = "212340";
-            String URL = "jdbc:mariadb://iutdoua-web.univ-lyon1.fr/"+userID;
+            String userID = "pe";
+            String pwd = "pe";
+            String URL = "jdbc:derby://localhost:1527/sushinosss";
             conn = (Connection) DriverManager.getConnection(URL, userID, pwd);
-            
+
             return (conn);
-         } catch (SQLException e) {
+        } catch (SQLException e) {
             Logger.getLogger(MariaDBDriverManager.class.getName()).log(Level.SEVERE, null, e);
-         }
-         return null;   
+        }
+        return null;   
     } // fin de ConnexionMariaDB
 }

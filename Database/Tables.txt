@@ -37,6 +37,7 @@ create table PRODUIT
    PRIX                 numeric(8,0) not null,
    TYPEPRODUIT          varchar(50) not null,
    LIBELLE              varchar(50) not null,
+   IMAGE                varchar(50) not null,
    primary key (NUMPRODUIT)
 );
 

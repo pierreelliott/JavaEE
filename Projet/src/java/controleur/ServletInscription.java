@@ -8,6 +8,8 @@ package controleur;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -53,11 +55,17 @@ public class ServletInscription extends HttpServlet {
 
         if (nom != null && prenom != null && pseudo != null && mail != null && telephone != null && mdp != null && mdpConfirm != null)
         {
-            //Vérifier si pseudo n'est pas déjà pris
-            if(true) message += "Ce pseudonyme n'est pas disponible<br>";
+            Manager man = new Manager();
             
             //Vérifier si les mdp sont identiques
             if(!mdp.equals(mdpConfirm)) message += "Les mots de passe ne sont pas identiques";
+            
+            try {
+                //Vérifier si pseudo n'est pas déjà pris
+                if(man.existe(pseudo)) message += "Ce pseudonyme n'est pas disponible<br>";
+            } catch (SQLException ex) {
+                message += "Erreur lors de l'inscription. Veuillez réessayer. (1)";
+            }
             
             //Si il y a eu une erreur, on redirige vers la page d'inscription en affichant le(s) message(s) d'erreur
             if(!message.equalsIgnoreCase(""))
@@ -69,7 +77,6 @@ public class ServletInscription extends HttpServlet {
             }
             
             boolean statut;
-            Manager man = new Manager();
             
             try {
                 if(numRue != null && rue != null && codePostal != null && ville != null)
@@ -83,12 +90,13 @@ public class ServletInscription extends HttpServlet {
                     statut = man.inscription(pseudo, mdp, nom, prenom, mail, telephone);
                 }
             } catch (SQLException e) {
+                System.out.println("Erreur inscription");
                 statut = false;
             }
             
-            if(!statut)
+            if(statut == false)
             {
-                request.setAttribute("message", "Erreur lors de l'inscription. Veuillez réessayer.");
+                request.setAttribute("message", "Erreur lors de l'inscription. Veuillez réessayer. (2)");
                 request.setAttribute("titrePage", "Inscription");
                 request.setAttribute("afficherPage", "pages/inscription.jsp");
                 this.getServletContext().getRequestDispatcher("/WEB-INF/layout.jsp").forward(request, response);
@@ -98,7 +106,7 @@ public class ServletInscription extends HttpServlet {
             request.setAttribute("pseudo", pseudo);
             request.setAttribute("mdp", mdp);
             
-            this.getServletContext().getRequestDispatcher("connexion").forward(request, response);
+            this.getServletContext().getRequestDispatcher("/connexion").forward(request, response);
         }
         else
         {

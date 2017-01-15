@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,7 +71,7 @@ public class Manager
     
     public boolean existe(String pseudo) throws SQLException {
         ResultSet resultat;
-        String requete = "select numUser from utilisateur where pseudo = "+pseudo;
+        String requete = "select numUser from utilisateur where pseudo = '"+pseudo+"'";
         resultat = lien.getLien(bdd).executeQuery(requete);
         
         return resultat.next();
@@ -86,7 +87,7 @@ public class Manager
         else
         {
             requete = "insert into utilisateur(pseudo, mdp, nom, prenom, mail, telephone, numRue, rue, ville, codePostal, typeUser, dateInscription)"+
-                        "values("+pseudo+", "+mdp+", "+nom+", "+prenom+", "+mail+", "+tel+", "+numRue+", "+rue+", "+ville+", "+codePostal+", 'USER', CURDATE())";
+                        "values('"+pseudo+"', '"+mdp+"', '"+nom+"', '"+prenom+"', '"+mail+"', '"+tel+"', "+numRue+", '"+rue+"', '"+ville+"', '"+codePostal+"', 'USER', CURRENT_DATE)";
             lien.getLien(bdd).executeUpdate(requete);
             
             return true;
@@ -103,7 +104,7 @@ public class Manager
         else
         {
             requete = "insert into utilisateur(pseudo, mdp, nom, prenom, mail, telephone, numRue, rue, ville, codePostal, typeUser, dateInscription)"+
-                        "values("+pseudo+", "+mdp+", "+nom+", "+prenom+", "+mail+", "+tel+", null, null, null, null, 'USER', CURDATE())";
+                        "values('"+pseudo+"', '"+mdp+"', '"+nom+"', '"+prenom+"', '"+mail+"', '"+tel+"', null, null, null, null, 'USER', CURRENT_DATE)";
             lien.getLien(bdd).executeUpdate(requete);
             
             return true;
@@ -113,12 +114,13 @@ public class Manager
     public Utilisateur connexion(String pseudo, String mdp) throws SQLException
     {
         ResultSet res;
-        String requete = "select numUser, pseudo, mdp, nom, prenom, mail, telephone, numRue, rue, ville, codePostal, dateInscription from utilisateur where pseudo = "+pseudo+" and mdp = "+mdp;
+        String requete = "select numUser, pseudo, mdp, nom, prenom, mail, telephone, numRue, rue, ville, codePostal, dateInscription from utilisateur where pseudo like '"+pseudo+"' and mdp like '"+mdp+"'";
         
         res = lien.getLien(bdd).executeQuery(requete);
         
         while(res.next())
         {
+            
             int numUser = res.getInt("numUser");
             String nom = res.getString("nom");
             String prenom = res.getString("prenom");
@@ -128,6 +130,7 @@ public class Manager
             String rue = getChamp(res.getString("rue"));
             String ville = getChamp(res.getString("ville"));
             String codePostal = getChamp(res.getString("codePostal"));
+            Date dateInscription = res.getTimestamp("dateInscription");
             
             Utilisateur user = new Utilisateur();
             user.setCodePostal(codePostal);
@@ -140,6 +143,7 @@ public class Manager
             user.setRue(rue);
             user.setTelephone(tel);
             user.setVille(ville);
+            user.setDateInscription(dateInscription);
             
             return user;
         }
@@ -153,7 +157,7 @@ public class Manager
     public void ajouterCommande(Commande comm) throws SQLException
     {
         String requete = "insert into commande(typeCommande, numRue, rue, ville, codePostal, date)"+
-                        "values('À emporter', "+comm.getNumRue()+", "+comm.getRue()+", "+comm.getVille()+", "+comm.getCodePostal()+", CURDATE())";
+                        "values('À emporter', "+comm.getNumRue()+", '"+comm.getRue()+"', '"+comm.getVille()+"', '"+comm.getCodePostal()+"', CURDATE())";
         lien.getLien(bdd).executeUpdate(requete);
         
         for(Produit p : comm.getProduits().keySet())

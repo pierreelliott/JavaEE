@@ -13,7 +13,7 @@
                     <a data-toggle="dropdown" href="#"><c:out value="${ sessionScope.utilisateur.pseudo }"/><b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="utilisateur">Mon compte</a></li>
-                        <li><a href="panier?action=afficher">Consulter panier</a></li>
+                        <li><a href="panier">Consulter panier</a></li>
                         <li class="divider"></li>
                         <li><a href="connexion">Déconnexion</a></li>
                     </ul>
@@ -26,7 +26,7 @@
         </c:choose>
         
 
-        <li><a href="panier?action=afficher"><span class="glyphicon glyphicon-shopping-cart"></a></li>
+        <li><a href="panier"><span class="glyphicon glyphicon-shopping-cart"></a></li>
     </ul>
 </nav>
 <!-- NAVBAR END -->

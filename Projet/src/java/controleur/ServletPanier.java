@@ -39,6 +39,7 @@ public class ServletPanier extends HttpServlet {
         HttpSession session = request.getSession(true);
         
         String action = request.getParameter("action");
+        if(action == null) action ="";
         
         Panier panier = (Panier)session.getAttribute("panier");
         if(panier == null) panier = new Panier();
@@ -79,7 +80,7 @@ public class ServletPanier extends HttpServlet {
                 break;
             case "afficher":
             default:
-                if(panier.getProduits().isEmpty()) request.setAttribute("panierVide", true);
+                if(panier.getProduits() == null || panier.getProduits().isEmpty()) request.setAttribute("panierVide", true);
                 request.setAttribute("titrePage", "Panier");
                 request.setAttribute("afficherPage", "pages/panier.jsp");
                 this.getServletContext().getRequestDispatcher( "/WEB-INF/layout.jsp" ).forward( request, response );

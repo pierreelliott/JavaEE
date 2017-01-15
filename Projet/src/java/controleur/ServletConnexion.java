@@ -7,6 +7,8 @@ package controleur;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,19 +37,34 @@ public class ServletConnexion extends HttpServlet {
         HttpSession session = request.getSession(true);
         
         //Si la session contient un objet utilisateur, on déconnecte cet utilisateur
+        
         if(session.getAttribute("utilisateur") != null)
         {
             session.removeAttribute("utilisateur");
             session.invalidate();
+            this.getServletContext().getRequestDispatcher("/accueil").forward( request, response );
         }
         else
         {
-            Manager man = new Manager();
+            String pseudo;
+            String mdp;
+            Object redir = request.getAttribute("redirection");
             
-            String pseudo = getChamp(request,"pseudo");
-            String mdp = getChamp(request,"mdp");
+            if(redir != null && (boolean)redir == true)
+            {
+                pseudo = getChamp2(request,"pseudo");
+                mdp = getChamp2(request,"mdp");
+            }
+            else
+            {
+                pseudo = getChamp(request,"pseudo");
+                mdp = getChamp(request,"mdp");
+            }
+            
             if(pseudo != null && mdp != null)
             {
+                Manager man = new Manager();
+                
                 Utilisateur user = null;
                 try
                 {
@@ -55,16 +72,14 @@ public class ServletConnexion extends HttpServlet {
                 }
                 catch (SQLException ex)
                 {
-                    request.setAttribute("message", "Votre pseudo ou votre mot de passe est incorrect");
-                    request.setAttribute("titrePage", "Connexion");
-                    request.setAttribute("afficherPage", "pages/connexion.jsp");
-                    this.getServletContext().getRequestDispatcher( "/WEB-INF/layout.jsp" ).forward( request, response );
+                    user = null;
                 }
                 
+                //Logger.getLogger(ServletConnexion.class.getName()).log(Level.SEVERE, null, "");
                 if(user != null) //si logs valides
                 {
                     session.setAttribute("utilisateur",user);
-                    this.getServletContext().getRequestDispatcher( "accueil" ).forward( request, response );
+                    this.getServletContext().getRequestDispatcher("/accueil").forward( request, response );
                 }
                 else
                 {
@@ -124,10 +139,19 @@ public class ServletConnexion extends HttpServlet {
 
     private static String getChamp( HttpServletRequest request, String nomChamp ) {
         String valeur;
-        if((boolean)request.getAttribute("redirection"))
-            valeur = request.getParameter( nomChamp );
+        /*if((boolean)request.getAttribute("redirection"))*/
+            valeur = request.getParameter( nomChamp );/*
         else
-            valeur = (String)request.getAttribute( nomChamp );
+            valeur = (String)request.getAttribute( nomChamp );*/
+        if ( valeur == null || valeur.trim().length() == 0 ) {
+            return null;
+        } else {
+            return valeur;
+        }
+    }
+    
+    private static String getChamp2( HttpServletRequest request, String nomChamp ) {
+        String valeur = (String)request.getAttribute( nomChamp );
         if ( valeur == null || valeur.trim().length() == 0 ) {
             return null;
         } else {
