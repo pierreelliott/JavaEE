@@ -21,6 +21,8 @@ public class Produit implements Serializable {
     
     private String image;
     
+    private int quantite;
+    
     public void setImage(String image) {
         this.image = image;
     }
@@ -67,6 +69,14 @@ public class Produit implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    public int getQuantite() {
+        return this.quantite;
+    }
+    
+    public void setQuantite(int qte) {
+        this.quantite = qte;
     }
 
     @Override

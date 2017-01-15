@@ -33,7 +33,7 @@
                                         <button type="button" data-action="modification" data-produit="${ produit.numProduit }" data-qte="1" class="btn btn-xs btn-primary btn-qte-produit">+</button>
                                     </div>
                                     <div class="col-xs-1">
-                                        <p><c:out value="${ requestScope.panier.produits.produit }" default="0"/></p>
+                                        <p id="qte"><c:out value="${ requestScope.panier.produits.produit }" default="0"/></p>
                                     </div>
                                     <div class="col-xs-1">
                                         <button type="button" data-action="modification" data-produit="${ produit.numProduit }" data-qte="-1" class="btn btn-xs btn-primary btn-qte-produit">-</button>

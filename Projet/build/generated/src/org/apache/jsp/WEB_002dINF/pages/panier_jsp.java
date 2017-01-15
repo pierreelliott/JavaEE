@@ -294,7 +294,7 @@ public final class panier_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("\" data-qte=\"1\" class=\"btn btn-xs btn-primary btn-qte-produit\">+</button>\r\n");
           out.write("                                    </div>\r\n");
           out.write("                                    <div class=\"col-xs-1\">\r\n");
-          out.write("                                        <p>");
+          out.write("                                        <p id=\"qte\">");
           if (_jspx_meth_c_out_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
           out.write("</p>\r\n");

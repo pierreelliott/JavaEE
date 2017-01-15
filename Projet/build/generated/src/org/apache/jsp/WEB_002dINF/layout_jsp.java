@@ -73,7 +73,7 @@ public final class layout_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\t<body>\r\n");
       out.write("                ");
-      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "jspf/header.jspf", out, false);
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "pages/header.jsp", out, false);
       out.write("\r\n");
       out.write("                ");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "jspf/bootstrapJavascript.jspf", out, false);

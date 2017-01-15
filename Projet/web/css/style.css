@@ -128,3 +128,10 @@ footer
 {
     margin-right: 0;
 }
+
+.alert
+{
+  position: fixed;
+  right: 0;
+  margin-right: 15px;
+}

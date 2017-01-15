@@ -22,38 +22,26 @@ public class Commande implements Serializable {
     
     private int nbProduits;
     private int prix = 0;
-    private List<Produit> prods;
-    private Map<Produit,Integer> produits; //Key => produit //Value => quantité
-                                            // Mettre seulement le numProduit ?
+    private List<Produit> produits;
     private int numRue;
     private String rue;
     private String ville;
     private String codePostal;
 
-    public List<Produit> getProds() {
-        return prods;
-    }
-
     public int getPrix() {
         return prix;
     }
 
-    public void setProds(List<Produit> prods) {
-        this.prods = prods;
-    }
-
-    public Map<Produit,Integer> getProduits() {
+    public List<Produit> getProduits() {
         return produits;
     }
 
-    public void setProduits(Map<Produit,Integer> produits) {
+    public void setProduits(List<Produit> produits) {
         this.produits = produits;
-        
-        this.prods = new ArrayList<>();
-        for(Produit p : produits.keySet())
+
+        for(Produit p : produits)
         {
-            prods.add(p);
-            prix += p.getPrix()*produits.get(p);
+            prix += p.getPrix()*p.getQuantite();
         }
     }
     

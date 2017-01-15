@@ -168,10 +168,10 @@ public class Manager
         }
         lien.getLien(bdd).executeUpdate(requete);
         
-        for(Produit p : comm.getProduits().keySet())
+        for(Produit p : comm.getProduits())
         {
             requete = "insert into quantiteProduit (numCommande, numProduit, quantite) values ("+
-                    comm.getNumCommande()+","+p.getNumProduit()+","+comm.getProduits().get(p)+")";
+                    comm.getNumCommande()+","+p.getNumProduit()+","+p.getQuantite()+")";
             lien.getLien(bdd).executeUpdate(requete);
         }
     }
@@ -205,7 +205,7 @@ public class Manager
         Carte carte = recupererCarte();
         for(Commande tmp : commandes)
         {
-            Map<Produit,Integer> produits = new HashMap<>();
+            ArrayList<Produit> produits = new ArrayList<>();
             int nbProduits = 0;
             
             requete = "select numProduit, quantite from quantiteProduit where numCommande = "+tmp.getNumCommande();
@@ -217,7 +217,7 @@ public class Manager
                 nbProduits += quantite;
                 
                 Produit prod = carte.getProduit(numProduit);
-                produits.put(prod, quantite);
+                prod.setQuantite(quantite);
             }
             tmp.setProduits(produits);
             tmp.setNbProduits(nbProduits);

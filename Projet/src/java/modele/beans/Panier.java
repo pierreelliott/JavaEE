@@ -16,45 +16,37 @@ import java.util.Map;
  */
 public class Panier implements Serializable {
 
-    private Map<Produit,Integer> produits;
-    private List<Produit> prods;
+    private List<Produit> produits;
 
-    public List<Produit> getProds() {
-        return prods;
-    }
-
-    public void setProds(List<Produit> prods) {
-        this.prods = prods;
-    }
-
-    public Map<Produit,Integer> getProduits() {
+    public List<Produit> getProduits() {
         return produits;
     }
 
-    public void setProduits(Map<Produit,Integer> produits) {
+    public void setProduits(List<Produit> produits) {
         this.produits = produits;
-        
-        this.prods = new ArrayList<>();
-        for(Produit p : produits.keySet()) {
-            prods.add(p);
-        }
     }
 
     public void addProduit(Produit p, int qte) {
-        produits.put(p,qte);
-        prods.add(p);
+        p.setQuantite(qte);
+        produits.add(p);
     }
     
     public void modifProduit(Produit p, int qte) {
-        produits.replace(p, qte);
+        for(Produit tmp : produits)
+        {
+            if(tmp.equals(p))
+            {
+                tmp.setQuantite(tmp.getQuantite() + qte);
+            }
+        }
     }
 
     public boolean removeProduit(Produit p) {
-        return (produits.remove(p) != 0);
+        return (produits.remove(p) != false);
     }
 
     public Produit getProduit(int numProduit) {
-        for (Produit tmp : produits.keySet()) {
+        for (Produit tmp : produits) {
             if (tmp.getNumProduit() == numProduit) {
                 return tmp;
             }
@@ -63,7 +55,7 @@ public class Panier implements Serializable {
     }
     
     public Produit getProduit(Produit p) {
-        for (Produit tmp : produits.keySet()) {
+        for (Produit tmp : produits) {
             if (tmp.equals(p)) {
                 return tmp;
             }

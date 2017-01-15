@@ -17,10 +17,10 @@
         <!-- Nouvel affichage -->
         <div class="row">
             <div class="col-lg-offset-3 col-lg-6 site-wrapper">
-                <div>
+                <div class="panier">
                     <legend>Votre panier</legend>
                     <div class="row">
-                        <c:forEach items="${ requestScope.panier.prods }" var="produit">
+                        <c:forEach items="${ requestScope.panier.produits }" var="produit">
                             <div class="col-xs-12 produit">
                                 <div class="row">
                                     <div class="col-xs-2">
@@ -33,13 +33,13 @@
                                         <button type="button" data-action="modification" data-produit="${ produit.numProduit }" data-qte="1" class="btn btn-xs btn-primary btn-qte-produit">+</button>
                                     </div>
                                     <div class="col-xs-1">
-                                        <p id="qte"><c:out value="${ requestScope.panier.produits.produit }" default="0"/></p>
+                                        <p id="qte"><c:out value="${ produit.quantite }" default="0"/></p>
                                     </div>
                                     <div class="col-xs-1">
                                         <button type="button" data-action="modification" data-produit="${ produit.numProduit }" data-qte="-1" class="btn btn-xs btn-primary btn-qte-produit">-</button>
                                     </div>
                                     <div class="col-xs-3">
-                                        <p>${ produit.prix } €</p>
+                                        <p class="prix">${ produit.prix } €</p>
                                     </div>
                                     <div class="col-xs-1">
                                         <button type="button" data-action="suppression" data-produit="${ produit.numProduit }" class="btn btn-xs btn-danger btn-qte-produit">&times;</button>
@@ -75,7 +75,6 @@
 <!-- ======== Fin Code HTML ======== -->
 
 <!-- ======== Début Code Javascript ======== -->
-<script>
 <script>
     $(function()
     {
