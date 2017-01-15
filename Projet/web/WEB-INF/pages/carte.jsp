@@ -92,7 +92,10 @@
             var produit = $(this).data('produit');
             var action = $(this).data('action');
             var qte = $(this).data('qte');
-            $.post('WEB-INF/panier',
+            console.log(produit);
+            console.log(action);
+            console.log(qte);
+            $.post('panier',
             {
                 action: action,
                 numProduit: produit,
