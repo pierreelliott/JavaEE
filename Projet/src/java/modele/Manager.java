@@ -154,10 +154,18 @@ public class Manager
     /* ###################################################################### */
     /* ============================ Commande ================================ */
     
-    public void ajouterCommande(Commande comm) throws SQLException
+    public void ajouterCommande(Commande comm, Utilisateur user) throws SQLException
     {
-        String requete = "insert into commande(typeCommande, numRue, rue, ville, codePostal, date)"+
-                        "values('À emporter', "+comm.getNumRue()+", '"+comm.getRue()+"', '"+comm.getVille()+"', '"+comm.getCodePostal()+"', CURDATE())";
+        String requete;
+        if(user.getCodePostal() != null || user.getRue() != null || user.getVille() != null || user.getNumRue() != 0)
+        {
+            requete = "insert into commande(numUser, typeCommande, numRue, rue, ville, codePostal, date)"+
+                "values("+user.getNumUser()+"'À emporter', "+comm.getNumRue()+", '"+comm.getRue()+"', '"+comm.getVille()+"', '"+comm.getCodePostal()+"', CURRENT_DATE)";
+        }
+        else {
+            requete = "insert into commande(numUser, typeCommande, numRue, rue, ville, codePostal, date)"+
+                "values("+user.getNumUser()+"'À emporter', null, null, null, null, CURRENT_DATE)";
+        }
         lien.getLien(bdd).executeUpdate(requete);
         
         for(Produit p : comm.getProduits().keySet())
@@ -172,9 +180,7 @@ public class Manager
     {
         ResultSet resultat;
         String requete = "select numCommande, typeCommande, numRue, rue, ville, codePostal, date from commande where numUser = "+user.getNumUser();
-        
         List<Commande> commandes = new ArrayList<>();
-        
         resultat = lien.getLien(bdd).executeQuery(requete);
         while(resultat.next())
         {
@@ -186,7 +192,6 @@ public class Manager
             String codePostal = resultat.getString("codePostal");
             
             Commande comm = new Commande();
-            
             comm.setNumCommande(numCommande);
             comm.setTypeCommande(typeCommande);
             comm.setNumRue(numRue);
@@ -197,16 +202,13 @@ public class Manager
             commandes.add(comm);
         }
         user.setCommandes(commandes);
-        
         Carte carte = recupererCarte();
-        
         for(Commande tmp : commandes)
         {
             Map<Produit,Integer> produits = new HashMap<>();
             int nbProduits = 0;
             
             requete = "select numProduit, quantite from quantiteProduit where numCommande = "+tmp.getNumCommande();
-            
             resultat = lien.getLien(bdd).executeQuery(requete);
             while(resultat.next())
             {
@@ -215,14 +217,11 @@ public class Manager
                 nbProduits += quantite;
                 
                 Produit prod = carte.getProduit(numProduit);
-
                 produits.put(prod, quantite);
             }
-            
             tmp.setProduits(produits);
             tmp.setNbProduits(nbProduits);
         }
-        
         user.setCommandes(commandes);
     }
     

@@ -17,6 +17,22 @@
                     <div class="media-body">
                         <p class="lead">Nombre de produits : <c:out value="${commande.nbProduits}"/> €</p>
                         <p class="lead">Prix de la commande : <c:out value="${commande.prix}"/> €</p>
+                        <c:forEach items="${commande.prods}"  var="produit">
+                            <div class="row">
+                                <div class="panel panel-default">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            ${produit.image}
+                                        </div>
+                                        <div class="media-body">
+                                            <h1 class="media-heading text-muted">${produit.libelle}</h1>
+                                            <p class="muted pull-left">${produit.description}</p>
+                                            <p class="muted pull-left">${produit.prix}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
                     </div>
                 </div>
             </c:forEach>

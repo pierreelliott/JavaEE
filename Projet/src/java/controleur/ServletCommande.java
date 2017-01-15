@@ -6,11 +6,15 @@
 package controleur;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modele.Manager;
 import modele.beans.*;
 
 /**
@@ -30,17 +34,64 @@ public class ServletCommande extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
-        if(session.isNew()) session.setAttribute("estConnecte", false);
+        HttpSession session = request.getSession();
         
-        if((boolean)session.getAttribute("estConnecte"))
+        String action = request.getParameter("action");
+        if(action == null) action ="";
+        
+        Manager man = new Manager();
+        Utilisateur user = (Utilisateur)session.getAttribute("utilisateur");
+        
+        switch(action)
         {
-            
+            case "ajouter":
+                if(user != null)
+                {
+                    Commande comm = new Commande();
+                    Panier panier = (Panier)session.getAttribute("panier");
+                    
+                    if(user.getCodePostal() != null || user.getRue() != null || user.getVille() != null || user.getNumRue() != 0)
+                    {
+                        comm.setCodePostal(user.getCodePostal());
+                        comm.setNumRue(user.getNumRue());
+                        comm.setRue(user.getRue());
+                        comm.setVille(user.getVille());
+                    }
+                    comm.setProduits(panier.getProduits());
+                    
+                    user.addCommande(comm);
+                    try {
+                        man.ajouterCommande(comm, user);
+                    } catch (SQLException ex) {
+                        break;
+                    }
+                    session.removeAttribute("panier");
+                    this.getServletContext().getRequestDispatcher( "/accueil" ).forward( request, response );
+                }
+                else
+                    break;
+            case "afficher":
+            default:
+                if(user != null)
+                {
+                    try {
+                        man.recupererCommandes(user);
+                    } catch (SQLException ex) {
+                        break;
+                    }
+                    request.setAttribute("commandes", user.getCommandes());
+                    
+                    request.setAttribute("titrePage", "Mes commandes");
+                    request.setAttribute("afficherPage", "pages/commande.jsp");
+                    this.getServletContext().getRequestDispatcher( "/WEB-INF/layout.jsp" ).forward( request, response );
+                }
+                else
+                    break;
         }
-        else
-        {
-            
-        }
+        
+        request.setAttribute("titrePage", "Erreur");
+        request.setAttribute("afficherPage", "pages/404.jsp");
+        this.getServletContext().getRequestDispatcher( "/WEB-INF/layout.jsp" ).forward( request, response );
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

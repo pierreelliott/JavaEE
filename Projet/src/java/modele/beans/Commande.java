@@ -7,6 +7,7 @@ package modele.beans;
 
 import java.util.Date;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -19,6 +20,8 @@ public class Commande implements Serializable {
     private Date date;
     
     private int nbProduits;
+    private int prix = 0;
+    private List<Produit> prods;
     private Map<Produit,Integer> produits; //Key => produit //Value => quantité
                                             // Mettre seulement le numProduit ?
     private int numRue;
@@ -26,12 +29,30 @@ public class Commande implements Serializable {
     private String ville;
     private String codePostal;
 
+    public List<Produit> getProds() {
+        return prods;
+    }
+
+    public int getPrix() {
+        return prix;
+    }
+
+    public void setProds(List<Produit> prods) {
+        this.prods = prods;
+    }
+
     public Map<Produit,Integer> getProduits() {
         return produits;
     }
 
     public void setProduits(Map<Produit,Integer> produits) {
         this.produits = produits;
+        
+        for(Produit p : produits.keySet())
+        {
+            prods.add(p);
+            prix += p.getPrix()*produits.get(p);
+        }
     }
     
     public void setNumCommande(int numCommande) {

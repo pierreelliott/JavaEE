@@ -122,6 +122,10 @@ public class Utilisateur implements Serializable {
     public List<Commande> getCommandes() {
         return commandes;
     }
+    
+    public void addCommande(Commande commande) {
+        this.commandes.add(commande);
+    }
 
     public void setCommandes(List<Commande> commandes) {
         this.commandes = commandes;
