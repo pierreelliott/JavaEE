@@ -49,7 +49,7 @@ public class Panier implements Serializable {
     }
 
     public boolean removeProduit(Produit p) {
-        prix -= p.getPrix();
+        prix -= p.getPrix()*p.getQuantite();
         return (produits.remove(p) != false); 
     }
 

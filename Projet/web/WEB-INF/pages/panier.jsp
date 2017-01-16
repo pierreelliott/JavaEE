@@ -92,6 +92,7 @@
             function(data, status)
             {
                 // Faire une popup pour indiquer que le produit à bien été ajouté
+                location.reload();
 
                 var panierVide = $(data).find('.panier').data('estVide');
                 console.log('estVide : ' + panierVide);
