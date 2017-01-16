@@ -17,6 +17,7 @@ import java.util.Map;
 public class Panier implements Serializable {
 
     private List<Produit> produits;
+    private float prix;
 
     public List<Produit> getProduits() {
         return produits;
@@ -24,11 +25,16 @@ public class Panier implements Serializable {
 
     public void setProduits(List<Produit> produits) {
         this.produits = produits;
+        for(Produit tmp : produits)
+        {
+            prix += tmp.getPrix();
+        }
     }
 
     public void addProduit(Produit p, int qte) {
         p.setQuantite(qte);
         produits.add(p);
+        prix += p.getPrix()*qte;
     }
     
     public void modifProduit(Produit p, int qte) {
@@ -39,10 +45,12 @@ public class Panier implements Serializable {
                 tmp.setQuantite(tmp.getQuantite() + qte);
             }
         }
+        prix += p.getPrix()*qte;
     }
 
     public boolean removeProduit(Produit p) {
-        return (produits.remove(p) != false);
+        prix -= p.getPrix();
+        return (produits.remove(p) != false); 
     }
 
     public Produit getProduit(int numProduit) {
@@ -61,5 +69,13 @@ public class Panier implements Serializable {
             }
         }
         return null;
+    }
+
+    public float getPrix() {
+        return prix;
+    }
+
+    public void setPrix(float prix) {
+        this.prix = prix;
     }
 }

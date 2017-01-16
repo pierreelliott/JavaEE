@@ -49,7 +49,7 @@
                         </c:forEach>
                     </div>
                     <div class="row">
-                        <p>Prix du panier : 0 &euro;</p>
+                        <p>Prix du panier : <c:out value="${requestScope.panier.prix}" default="0"/>&euro;</p>
                     </div>
                 </div>
                 <hr/>
