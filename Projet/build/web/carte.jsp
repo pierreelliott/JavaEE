@@ -44,7 +44,7 @@
                             <td>${produit.description}</td>
                             <td><img src="${produit.image}" alt='Image du produit'></td>
                             <td>
-                                <a  href="panier?action=ajout&numProduit=${produit.numProduit}&qte=1" type="button" data-action="ajout" data-produit="${produit.numProduit}" class="btn btn-primary">
+                                <a href="panier?action=ajout&produit=${produit.numProduit}" data-action="ajout" data-produit="${produit.numProduit}" class="btn btn-primary">
                                         <img title='Ajouter au panier' alt='Ajouter au panier' src='images/achat2.png'>
                                 </a>
                             </td>
@@ -91,15 +91,15 @@
         $('button').click(function (e) {
             var produit = $(this).data('produit');
             var action = $(this).data('action');
-            //var qte = $(this).data('qte');
+            var qte = $(this).data('qte');
             console.log(produit);
             console.log(action);
-            //console.log(qte);
-            $.post('WEB-INF/panier',
+            console.log(qte);
+            $.post('panier',
             {
                 action: action,
-                numProduit: produit
-                //qte: qte
+                numProduit: produit,
+                qte: qte
             },
             function (data, status)
             {
@@ -110,6 +110,8 @@
                 {
                     fenAlert.addClass('hidden');
                 }, 2500);
+                
+                console.log(data);
             });
         });
 

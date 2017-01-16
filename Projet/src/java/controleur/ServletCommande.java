@@ -45,26 +45,34 @@ public class ServletCommande extends HttpServlet {
         switch(action)
         {
             case "ajouter":
+                System.out.println("Allo1");
                 if(user != null)
                 {
+                    System.out.println("Allo2");
                     Commande comm = new Commande();
                     Panier panier = (Panier)session.getAttribute("panier");
                     
                     if(user.getCodePostal() != null || user.getRue() != null || user.getVille() != null || user.getNumRue() != 0)
                     {
+                        System.out.println("Allo3");
                         comm.setCodePostal(user.getCodePostal());
                         comm.setNumRue(user.getNumRue());
                         comm.setRue(user.getRue());
                         comm.setVille(user.getVille());
                     }
                     comm.setProduits(panier.getProduits());
-                    
+                    System.out.println("Allo4");
                     user.addCommande(comm);
                     try {
+                        int num = man.recupMaxNumCommande()+1;
+                        comm.setNumCommande(num);
                         man.ajouterCommande(comm, user);
+                        System.out.println("Allo5");
                     } catch (SQLException ex) {
+                        System.out.println("Allo6");
                         break;
                     }
+                    System.out.println("Allo7");
                     session.removeAttribute("panier");
                     this.getServletContext().getRequestDispatcher( "/accueil" ).forward( request, response );
                 }

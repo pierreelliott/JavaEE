@@ -13,7 +13,8 @@
                     <a data-toggle="dropdown" href="#"><c:out value="${ sessionScope.utilisateur.pseudo }"/><b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="utilisateur">Mon compte</a></li>
-                        <li><a href="panier">Consulter panier</a></li>
+                        <li><a href="panier">Mon panier</a></li>
+                        <li><a href="commande">Mes commandes</a></li>
                         <li class="divider"></li>
                         <li><a href="connexion">Déconnexion</a></li>
                     </ul>

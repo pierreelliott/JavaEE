@@ -46,16 +46,17 @@ public class ServletConnexion extends HttpServlet {
         {
             session.removeAttribute("utilisateur");
             session.invalidate();
-            String derniereConnexion = getCookieValue(request, "dateDerniereConnexion");
+            /*String derniereConnexion = getCookieValue(request, "dateDerniereConnexion");
             if (derniereConnexion != null) {
                 Cookie coo = new Cookie("dateDerniereConnexion","");
                 coo.setMaxAge(0);
                 response.addCookie(coo);
-            }
+            }*/
             this.getServletContext().getRequestDispatcher("/accueil").forward( request, response );
         }
         else
         {
+            System.out.println("All 1");
             String pseudo;
             String mdp;
             Object redir = request.getAttribute("redirection");
@@ -73,6 +74,7 @@ public class ServletConnexion extends HttpServlet {
             
             if(pseudo != null && mdp != null)
             {
+                System.out.println("All 2");
                 Manager man = new Manager();
                 
                 Utilisateur user = null;
@@ -82,20 +84,25 @@ public class ServletConnexion extends HttpServlet {
                 }
                 catch (SQLException ex)
                 {
+                    System.out.println("All 3");
                     user = null;
                 }
                 
                 //Logger.getLogger(ServletConnexion.class.getName()).log(Level.SEVERE, null, "");
                 if(user != null) //si logs valides
                 {
+                    System.out.println("All 10");
                     String derniereConnexion = getCookieValue(request, "dateDerniereConnexion");
-                    if (derniereConnexion != null) {
+                    if (derniereConnexion == null) {
+                        System.out.println("All 11");
                         /* Récupération de la date courante */
                         derniereConnexion = DateFormat.getDateInstance( DateFormat.MEDIUM ).format( new Date() ) ;
                         Cookie cook = new Cookie("dateDerniereConnexion",derniereConnexion);
+                        System.out.println(cook.getName());
+                        cook.setMaxAge(60*60*24*365);
                         response.addCookie(cook);
-                        session.setAttribute("utilisateur",user);
                     }
+                    session.setAttribute("utilisateur",user);
                     this.getServletContext().getRequestDispatcher("/accueil").forward( request, response );
                 }
                 else
@@ -180,7 +187,7 @@ public class ServletConnexion extends HttpServlet {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                if (cookie != null && nom.equals(cookie.getName())) {
+                if (nom.equals(cookie.getName())) {
                     return cookie.getValue();
                 }
             }

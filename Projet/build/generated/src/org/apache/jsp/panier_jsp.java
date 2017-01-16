@@ -79,7 +79,6 @@ public final class panier_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("<!-- ======== Début Code Javascript ======== -->\r\n");
       out.write("<script>\r\n");
-      out.write("<script>\r\n");
       out.write("    $(function()\r\n");
       out.write("    {\r\n");
       out.write("        $('button').click(function(e)\r\n");
@@ -222,7 +221,7 @@ public final class panier_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("        <!-- Nouvel affichage -->\r\n");
         out.write("        <div class=\"row\">\r\n");
         out.write("            <div class=\"col-lg-offset-3 col-lg-6 site-wrapper\">\r\n");
-        out.write("                <div>\r\n");
+        out.write("                <div class=\"panier\">\r\n");
         out.write("                    <legend>Votre panier</legend>\r\n");
         out.write("                    <div class=\"row\">\r\n");
         out.write("                        ");
@@ -266,7 +265,7 @@ public final class panier_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
     _jspx_th_c_forEach_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_otherwise_0);
-    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ requestScope.panier.prods }", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ requestScope.panier.produits }", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     _jspx_th_c_forEach_0.setVar("produit");
     int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
     try {
@@ -305,7 +304,7 @@ public final class panier_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("\" data-qte=\"-1\" class=\"btn btn-xs btn-primary btn-qte-produit\">-</button>\r\n");
           out.write("                                    </div>\r\n");
           out.write("                                    <div class=\"col-xs-3\">\r\n");
-          out.write("                                        <p>");
+          out.write("                                        <p class=\"prix\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ produit.prix }", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write(" €</p>\r\n");
           out.write("                                    </div>\r\n");
@@ -344,7 +343,7 @@ public final class panier_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_0 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_default_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_out_0.setPageContext(_jspx_page_context);
     _jspx_th_c_out_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
-    _jspx_th_c_out_0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ requestScope.panier.produits.produit }", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ produit.quantite }", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     _jspx_th_c_out_0.setDefault("0");
     int _jspx_eval_c_out_0 = _jspx_th_c_out_0.doStartTag();
     if (_jspx_th_c_out_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {

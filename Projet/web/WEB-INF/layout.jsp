@@ -13,7 +13,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<meta name="description" content="sushis en ligne restauration rapide emporter livraison">
-		<meta name="author" content="Pierre-Elliott THIBOUD - Axel BERTRAND - Thomas BROUTIER">
+		<meta name="author" content="Pierre-Elliott THIBOUD - Axel BERTRAND">
 		<link rel="icon" href="images/logo_onglet.png">
 
 		<title>Sushinos - ${requestScope.titrePage}</title>

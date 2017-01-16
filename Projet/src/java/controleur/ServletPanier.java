@@ -40,11 +40,10 @@ public class ServletPanier extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(true);
-        PrintWriter out = response.getWriter();
         
         String action = request.getParameter("action");
         if(action == null) action ="";
-        out.println(action);
+        System.out.println(action);
         
         Panier panier = (Panier)session.getAttribute("panier");
         if(panier == null){
@@ -54,46 +53,46 @@ public class ServletPanier extends HttpServlet {
         else panier = (Panier)session.getAttribute("panier");
         
         int numP;
-        int qte;
+        int qte = 1;
         
         switch(action)
         {
             case "ajout":
                 if(request.getParameter("numProduit") == null)
                 {
-                    out.println("erreur numProduit");
+                    System.out.println("erreur numProduit");
                 }
-                numP = 1;
+                numP = Integer.parseInt(request.getParameter("numProduit"));
                 if(request.getParameter("qte") == null)
                 {
-                   out.println("erreur qte");
+                   System.out.println("erreur qte");
+                   qte = 1;
                 }
-                qte = 1;
                 if(qte < 1) qte = 1;
                 Manager man = new Manager();
                 Carte carte;
-                out.println("Allo1");
+                System.out.println("Allo1");
                 try {
                     carte = man.recupererCarte();
                     Produit p = carte.getProduit(numP);
-                    if(p == null)
+                    if(panier.getProduit(p) == null)
                     {
-                        out.println("Allo2");
+                        System.out.println("Allo2");
                         //System.out.println("Produit : "+p+", libelle :"+p.getLibelle());
                         panier.addProduit(p,1);
                     }
                     else
                     {
-                        out.println("Allo3");
+                        System.out.println("Allo3");
                         panier.modifProduit(p, 1);
                     }
                     
                 } catch (SQLException ex) {
                     Logger.getLogger(ServletPanier.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                out.println("Allo4");
+                System.out.println("Allo4");
                 session.setAttribute("panier", panier);
-                out.println("Allo5");
+                System.out.println("Allo5");
                 this.getServletContext().getRequestDispatcher( "/carte" ).forward( request, response );
                 break;
                 

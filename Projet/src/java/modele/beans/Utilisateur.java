@@ -22,7 +22,7 @@ public class Utilisateur implements Serializable {
     private String mail;
     private String pseudo;
     private String telephone;
-    private Date dateInscription;
+    private String dateInscription;
     
     private int numRue;
     private String rue;
@@ -79,11 +79,11 @@ public class Utilisateur implements Serializable {
         this.telephone = telephone;
     }
 
-    public Date getDateInscription() {
+    public String getDateInscription() {
         return dateInscription;
     }
 
-    public void setDateInscription(Date dateInscription) {
+    public void setDateInscription(String dateInscription) {
         this.dateInscription = dateInscription;
     }
 

@@ -9,6 +9,7 @@ package modele;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -130,7 +131,10 @@ public class Manager
             String rue = getChamp(res.getString("rue"));
             String ville = getChamp(res.getString("ville"));
             String codePostal = getChamp(res.getString("codePostal"));
-            Date dateInscription = res.getTimestamp("dateInscription");
+            Date dt = res.getTimestamp("dateInscription");
+            String dateInscription = "";
+            if( dt != null)
+                dateInscription = DateFormat.getDateInstance( DateFormat.MEDIUM ).format(dt);
             
             Utilisateur user = new Utilisateur();
             user.setCodePostal(codePostal);
@@ -154,26 +158,38 @@ public class Manager
     /* ###################################################################### */
     /* ============================ Commande ================================ */
     
+    public int recupMaxNumCommande() throws SQLException {
+        ResultSet resultat;
+        resultat = lien.getLien(bdd).executeQuery("select Max(numCommande) comm from commande");
+        while(resultat.next()) {
+            return resultat.getInt("comm");
+        }
+        return 0;
+    }
+    
     public void ajouterCommande(Commande comm, Utilisateur user) throws SQLException
     {
         String requete;
         if(user.getCodePostal() != null || user.getRue() != null || user.getVille() != null || user.getNumRue() != 0)
         {
+            System.out.println("Allo11");
             requete = "insert into commande(numUser, typeCommande, numRue, rue, ville, codePostal, date)"+
                 "values("+user.getNumUser()+"'À emporter', "+comm.getNumRue()+", '"+comm.getRue()+"', '"+comm.getVille()+"', '"+comm.getCodePostal()+"', CURRENT_DATE)";
         }
         else {
+            System.out.println("Allo12");
             requete = "insert into commande(numUser, typeCommande, numRue, rue, ville, codePostal, date)"+
-                "values("+user.getNumUser()+"'À emporter', null, null, null, null, CURRENT_DATE)";
+                "values("+user.getNumUser()+",'À emporter', null, null, null, null, CURRENT_DATE)";
         }
         lien.getLien(bdd).executeUpdate(requete);
-        
+        System.out.println("Allo13");
         for(Produit p : comm.getProduits())
         {
-            requete = "insert into quantiteProduit (numCommande, numProduit, quantite) values ("+
-                    comm.getNumCommande()+","+p.getNumProduit()+","+p.getQuantite()+")";
+            System.out.println(p+" : "+comm.getNumCommande()+" / "+p.getNumProduit()+" / "+p.getQuantite());
+            requete = "insert into QUANTITEPRODUIT (numCommande, numProduit, quantite) values("+comm.getNumCommande()+","+p.getNumProduit()+","+p.getQuantite()+")";
             lien.getLien(bdd).executeUpdate(requete);
         }
+        System.out.println("Allo14");
     }
     
     public void recupererCommandes(Utilisateur user) throws SQLException
@@ -201,7 +217,8 @@ public class Manager
             
             commandes.add(comm);
         }
-        user.setCommandes(commandes);
+        //user.setCommandes(commandes);
+        List<Commande> comms = new ArrayList<>();
         Carte carte = recupererCarte();
         for(Commande tmp : commandes)
         {
@@ -218,11 +235,13 @@ public class Manager
                 
                 Produit prod = carte.getProduit(numProduit);
                 prod.setQuantite(quantite);
+                produits.add(prod);
             }
             tmp.setProduits(produits);
             tmp.setNbProduits(nbProduits);
+            comms.add(tmp);
         }
-        user.setCommandes(commandes);
+        user.setCommandes(comms);
     }
     
     /* ########################### Méthodes statiques ################################ */
