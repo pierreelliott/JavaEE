@@ -143,14 +143,14 @@ public final class inscription_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <div class=\"row\">\r\n");
       out.write("                                <div class=\"col-lg-6\">\r\n");
       out.write("                                    <div class=\"form-group\">\r\n");
-      out.write("                                        <label for=\"mdpConfirm\" class=\"control-label\">Confirmer mot de passe <span class=\"text-danger\">*</span></label>\r\n");
-      out.write("                                        <input type=\"password\" id=\"mdpConfirm\" name=\"mdpConfirm\" placeholder=\"Confirmer mot de passe\" class=\"form-control\" required/>\r\n");
+      out.write("                                        <label for=\"mdp\" class=\"control-label\">Mot de passe <span class=\"text-danger\">*</span></label>\r\n");
+      out.write("                                        <input type=\"password\" id=\"mdp\" name=\"mdp\" placeholder=\"Mot de passe\" class=\"form-control\" required/>\r\n");
       out.write("                                    </div>\r\n");
       out.write("                                </div>\r\n");
       out.write("                                <div class=\"col-lg-6\">\r\n");
       out.write("                                    <div class=\"form-group\">\r\n");
-      out.write("                                        <label for=\"mdp\" class=\"control-label\">Mot de passe <span class=\"text-danger\">*</span></label>\r\n");
-      out.write("                                        <input type=\"password\" id=\"mdp\" name=\"mdp\" placeholder=\"Mot de passe\" class=\"form-control\" required/>\r\n");
+      out.write("                                        <label for=\"mdpConfirm\" class=\"control-label\">Confirmer mot de passe <span class=\"text-danger\">*</span></label>\r\n");
+      out.write("                                        <input type=\"password\" id=\"mdpConfirm\" name=\"mdpConfirm\" placeholder=\"Confirmer mot de passe\" class=\"form-control\" required/>\r\n");
       out.write("                                    </div>\r\n");
       out.write("                                </div>\r\n");
       out.write("                            </div>\r\n");

@@ -126,7 +126,7 @@ public final class carte_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    $(function ()\r\n");
       out.write("    {\r\n");
       out.write("\r\n");
-      out.write("\r\n");
+      out.write("        /*\r\n");
       out.write("        $('button').click(function (e) {\r\n");
       out.write("            var produit = $(this).data('produit');\r\n");
       out.write("            var action = $(this).data('action');\r\n");
@@ -152,7 +152,7 @@ public final class carte_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                \r\n");
       out.write("                console.log(data);\r\n");
       out.write("            });\r\n");
-      out.write("        });\r\n");
+      out.write("        });*/\r\n");
       out.write("\r\n");
       out.write("        $('#produitModal').on('show.bs.modal', function (event) {\r\n");
       out.write("            var button = $(event.relatedTarget);\r\n");
@@ -227,9 +227,9 @@ public final class carte_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("</td>\r\n");
           out.write("                            <td><img src=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${produit.image}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("\" alt='Image du produit'></td>\r\n");
+          out.write("\" alt='Image du produit' class=\"img-responsive\"></td>\r\n");
           out.write("                            <td>\r\n");
-          out.write("                                <a href=\"panier?action=ajout&produit=");
+          out.write("                                <a href=\"panier?action=ajout&numProduit=");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${produit.numProduit}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("\" data-action=\"ajout\" data-produit=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${produit.numProduit}", java.lang.String.class, (PageContext)_jspx_page_context, null));

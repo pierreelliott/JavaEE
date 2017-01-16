@@ -59,7 +59,7 @@ public final class layout_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n");
       out.write("\t\t<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->\r\n");
       out.write("\t\t<meta name=\"description\" content=\"sushis en ligne restauration rapide emporter livraison\">\r\n");
-      out.write("\t\t<meta name=\"author\" content=\"Pierre-Elliott THIBOUD - Axel BERTRAND - Thomas BROUTIER\">\r\n");
+      out.write("\t\t<meta name=\"author\" content=\"Pierre-Elliott THIBOUD - Axel BERTRAND\">\r\n");
       out.write("\t\t<link rel=\"icon\" href=\"images/logo_onglet.png\">\r\n");
       out.write("\r\n");
       out.write("\t\t<title>Sushinos - ");

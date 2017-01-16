@@ -153,7 +153,8 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("<b class=\"caret\"></b></a>\r\n");
         out.write("                    <ul class=\"dropdown-menu\">\r\n");
         out.write("                        <li><a href=\"utilisateur\">Mon compte</a></li>\r\n");
-        out.write("                        <li><a href=\"panier\">Consulter panier</a></li>\r\n");
+        out.write("                        <li><a href=\"panier\">Mon panier</a></li>\r\n");
+        out.write("                        <li><a href=\"commande\">Mes commandes</a></li>\r\n");
         out.write("                        <li class=\"divider\"></li>\r\n");
         out.write("                        <li><a href=\"connexion\">Déconnexion</a></li>\r\n");
         out.write("                    </ul>\r\n");

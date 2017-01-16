@@ -230,7 +230,10 @@ public final class panier_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\r\n");
         out.write("                    </div>\r\n");
         out.write("                    <div class=\"row\">\r\n");
-        out.write("                        <p>Prix du panier : 0 €</p>\r\n");
+        out.write("                        <p>Prix du panier : ");
+        if (_jspx_meth_c_out_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_otherwise_0, _jspx_page_context))
+          return true;
+        out.write("&euro;</p>\r\n");
         out.write("                    </div>\r\n");
         out.write("                </div>\r\n");
         out.write("                <hr/>\r\n");
@@ -306,7 +309,7 @@ public final class panier_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("                                    <div class=\"col-xs-3\">\r\n");
           out.write("                                        <p class=\"prix\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ produit.prix }", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write(" €</p>\r\n");
+          out.write(" &euro;</p>\r\n");
           out.write("                                    </div>\r\n");
           out.write("                                    <div class=\"col-xs-1\">\r\n");
           out.write("                                        <button type=\"button\" data-action=\"suppression\" data-produit=\"");
@@ -351,6 +354,25 @@ public final class panier_jsp extends org.apache.jasper.runtime.HttpJspBase
       return true;
     }
     _jspx_tagPool_c_out_value_default_nobody.reuse(_jspx_th_c_out_0);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_out_1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_otherwise_0, PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_1 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_default_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_out_1.setPageContext(_jspx_page_context);
+    _jspx_th_c_out_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_otherwise_0);
+    _jspx_th_c_out_1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${requestScope.panier.prix}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_1.setDefault("0");
+    int _jspx_eval_c_out_1 = _jspx_th_c_out_1.doStartTag();
+    if (_jspx_th_c_out_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_out_value_default_nobody.reuse(_jspx_th_c_out_1);
+      return true;
+    }
+    _jspx_tagPool_c_out_value_default_nobody.reuse(_jspx_th_c_out_1);
     return false;
   }
 

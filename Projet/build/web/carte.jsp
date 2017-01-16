@@ -42,9 +42,9 @@
                                 </a>
                             </td>
                             <td>${produit.description}</td>
-                            <td><img src="${produit.image}" alt='Image du produit'></td>
+                            <td><img src="${produit.image}" alt='Image du produit' class="img-responsive"></td>
                             <td>
-                                <a href="panier?action=ajout&produit=${produit.numProduit}" data-action="ajout" data-produit="${produit.numProduit}" class="btn btn-primary">
+                                <a href="panier?action=ajout&numProduit=${produit.numProduit}" data-action="ajout" data-produit="${produit.numProduit}" class="btn btn-primary">
                                         <img title='Ajouter au panier' alt='Ajouter au panier' src='images/achat2.png'>
                                 </a>
                             </td>
@@ -87,7 +87,7 @@
     $(function ()
     {
 
-
+        /*
         $('button').click(function (e) {
             var produit = $(this).data('produit');
             var action = $(this).data('action');
@@ -113,7 +113,7 @@
                 
                 console.log(data);
             });
-        });
+        });*/
 
         $('#produitModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);

@@ -39,7 +39,7 @@
                                         <button type="button" data-action="modification" data-produit="${ produit.numProduit }" data-qte="-1" class="btn btn-xs btn-primary btn-qte-produit">-</button>
                                     </div>
                                     <div class="col-xs-3">
-                                        <p class="prix">${ produit.prix } €</p>
+                                        <p class="prix">${ produit.prix } &euro;</p>
                                     </div>
                                     <div class="col-xs-1">
                                         <button type="button" data-action="suppression" data-produit="${ produit.numProduit }" class="btn btn-xs btn-danger btn-qte-produit">&times;</button>
@@ -49,7 +49,7 @@
                         </c:forEach>
                     </div>
                     <div class="row">
-                        <p>Prix du panier : 0 €</p>
+                        <p>Prix du panier : <c:out value="${requestScope.panier.prix}" default="0"/>&euro;</p>
                     </div>
                 </div>
                 <hr/>
@@ -92,6 +92,7 @@
             function(data, status)
             {
                 // Faire une popup pour indiquer que le produit à bien été ajouté
+                location.reload();
 
                 var panierVide = $(data).find('.panier').data('estVide');
                 console.log('estVide : ' + panierVide);
